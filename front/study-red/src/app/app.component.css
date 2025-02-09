@@ -1,0 +1,28 @@
+.custom-navbar {
+  background-color: #207cdf ;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: white !important;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #eb1330 !important;
+}
+
+.custom-navbar .navbar-toggler {
+  border-color: white !important;
+}
+
+.custom-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+.page-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  background: url('../../assets/logo.png') no-repeat center center;
+  background-size: contain; /* Mantém o tamanho original da imagem */
+}
