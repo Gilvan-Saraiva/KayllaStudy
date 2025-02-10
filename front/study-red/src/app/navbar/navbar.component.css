@@ -1,0 +1,57 @@
+.custom-navbar {
+  background-color: #207cdf;
+  padding: 0.75rem 1rem; /* Adicionei um padding para melhorar o espaçamento */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidade */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: white !important;
+  font-weight: 500; /* Texto um pouco mais forte */
+  transition: color 0.3s ease; /* Transição suave para o hover */
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffcc00 !important; /* Cor de hover mais suave e amigável */
+}
+
+.custom-navbar .navbar-toggler {
+  border-color: white !important;
+}
+
+.custom-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Estilo para o dropdown */
+.custom-navbar .dropdown-menu {
+  background-color: #207cdf; /* Fundo do dropdown igual à navbar */
+  border: none; /* Remove a borda padrão */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.custom-navbar .dropdown-item {
+  color: white !important;
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.custom-navbar .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Efeito hover sutil */
+}
+
+.custom-navbar .dropdown-divider {
+  border-color: rgba(255, 255, 255, 0.2); /* Divisor mais suave */
+}
+
+/* Estilo para o botão de busca */
+.custom-navbar .btn-outline-light {
+  border-color: white;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: white;
+  color: #207cdf; /* Cor de fundo ao passar o mouse */
+}

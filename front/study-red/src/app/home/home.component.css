@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  overflow: hidden;
+  background-color: #e8f1f2;
+}
+
+.page-background {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  background: url('../../../assets/logo.png') no-repeat right center;
+  background-size: 40%; /* Tamanho da imagem para desktop */
+  padding-left: 10%; /* Padding para desktop */
+  position: relative;
+}
+
+h1 {
+  font-size: 4rem; /* Tamanho da fonte para desktop */
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  z-index: 1;
+}
+
+.page-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+}
+
+/* Estilos para telas menores (celulares) */
+@media (max-width: 768px) {
+  .page-background {
+    justify-content: center; /* Centraliza o conteúdo em telas menores */
+    padding-left: 5%; /* Reduz o padding para telas menores */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-size: 70%; /* Aumenta o tamanho da imagem para melhor visibilidade */
+
+  }
+
+  h1 {
+    font-size: 2.5rem; /* Reduz o tamanho da fonte para telas menores */
+    text-align: center; /* Centraliza o texto */
+  }
+}
+
+/* Estilos para telas muito pequenas (ex.: smartphones pequenos) */
+@media (max-width: 480px) {
+  .page-background {
+    background-size: 90%; /* Aumenta ainda mais o tamanho da imagem */
+    padding-left: 2%; /* Padding mínimo */
+  }
+
+  h1 {
+    font-size: 2rem; /* Tamanho de fonte ainda menor */
+  }
+}
+
+
