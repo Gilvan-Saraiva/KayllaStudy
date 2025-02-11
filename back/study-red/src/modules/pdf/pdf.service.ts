@@ -5,7 +5,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { PdfFile } from './entities/pdf.entity';
-import { FirebaseConfig } from '../../config/firebase.config'; //aguardando o db amarel
+import { FirebaseConfig } from '../../config/studyred.json'; //aguardando o db amarel
 
 @Injectable()
 export class PdfService {
