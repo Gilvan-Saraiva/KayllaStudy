@@ -1,9 +1,5 @@
 const userServices = require('../Services/userServices');
 
-exports.hello = async (req, res) => {
-    console.log('hello world!');
-    res.send('hello world!');
-}
 
 exports.cadastraUsuario = async (req, res) => {
     const data = req.body;
@@ -17,3 +13,32 @@ exports.cadastraUsuario = async (req, res) => {
     }
 }
 
+exports.getUsers = async (req, res) => {
+    try {
+        const ans = await userServices.getUsers();
+        return res.status(ans.response).send({ payload: ans.payload });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.updateUsers = async (req, res) => {
+    const email = req.params.email;
+    const updateData = req.body;
+    try {
+        const ans = await userServices.updateUser(email, updateData);
+        return res.status(ans.response).send(ans.message);
+    } catch (error) {
+        
+    }
+};
+
+exports.deleteUsers = async (req, res) => {
+    const email = req.params.email;
+    try {
+        const ans = await userServices.deleteUser(email);
+        return res.status(ans.response).send(ans.message);
+    } catch (error) {
+        throw new Error(error);
+    }
+};
