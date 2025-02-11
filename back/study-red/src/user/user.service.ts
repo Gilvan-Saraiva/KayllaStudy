@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { FirebaseService } from '../firebase/firebase.service'
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(private readonly firebaseService: FirebaseService) {}
+  async create(createUserDto: CreateUserDto) {
+    const usersRef = this.firebaseService.getFirestore().collection('users');
+    return await usersRef.add(createUserDto);
   }
 
   findAll() {
