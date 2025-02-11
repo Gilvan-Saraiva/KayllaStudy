@@ -1,15 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  menuOpen = false;
+  constructor(private authService: AuthService) {}
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+
+  isAdmin(): boolean {
+    const user = this.authService.getUser();
+    return user && user.role === 'admin';
+  }
+  redirectToLogin() {
+    window.location.href = '/login';
   }
 }

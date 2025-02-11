@@ -1,50 +1,57 @@
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5rem;
-  background: var(--black-shade-1);
+.custom-navbar {
+  background-color: #207cdf;
+  padding: 0.75rem 1rem; /* Adicionei um padding para melhorar o espaçamento */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidade */
 }
 
-nav a#logo {
-  color: var(--white-shade-1);
-  font-size: var(--heading-font-size-2);
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: white !important;
+  font-weight: 500; /* Texto um pouco mais forte */
+  transition: color 0.3s ease; /* Transição suave para o hover */
 }
 
-#ham-menu {
-  display: none;
-  font-size: 2.5rem;
-  color: var(--white-shade-1);
-  cursor: pointer;
+.custom-navbar .nav-link:hover {
+  color: #ffcc00 !important; /* Cor de hover mais suave e amigável */
 }
 
-nav ul {
-  display: flex;
-  gap: 2rem;
+.custom-navbar .navbar-toggler {
+  border-color: white !important;
 }
 
-nav ul a {
-  color: var(--white-shade-1);
-  text-decoration: none;
+.custom-navbar .navbar-toggler-icon {
+  filter: invert(1);
 }
 
-@media (max-width: 767px) {
-  #ham-menu {
-    display: block;
-  }
+/* Estilo para o dropdown */
+.custom-navbar .dropdown-menu {
+  background-color: #207cdf; /* Fundo do dropdown igual à navbar */
+  border: none; /* Remove a borda padrão */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
 
-  nav ul {
-    position: fixed;
-    top: 70px;
-    left: -100vw;
-    width: 100%;
-    flex-direction: column;
-    background: var(--black-shade-1);
-    align-items: center;
-    transition: 0.5s;
-  }
+.custom-navbar .dropdown-item {
+  color: white !important;
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
 
-  nav ul.open {
-    left: 0;
-  }
+.custom-navbar .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Efeito hover sutil */
+}
+
+.custom-navbar .dropdown-divider {
+  border-color: rgba(255, 255, 255, 0.2); /* Divisor mais suave */
+}
+
+/* Estilo para o botão de busca */
+.custom-navbar .btn-outline-light {
+  border-color: white;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: rgb(162, 169, 172);
+  color: #207cdf; /* Cor de fundo ao passar o mouse */
 }
