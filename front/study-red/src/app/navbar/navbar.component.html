@@ -1,0 +1,11 @@
+<nav>
+  <a routerLink="/home" id="logo">Study Smart</a>
+  <i class="fas fa-bars" id="ham-menu" (click)="toggleMenu()"></i>
+  <ul id="nav-bar" [class.open]="menuOpen">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/features">Features</a></li>
+    <li><a routerLink="/courses">Courses</a></li>
+    <li><a routerLink="/testimonial">Testimonial</a></li>
+    <li><a routerLink="/download-app">App</a></li>
+  </ul>
+</nav>
