@@ -7,7 +7,8 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-navbar',
   imports: [FormsModule, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
+  standalone: true
 })
 export class NavbarComponent {
   constructor(private authService: AuthService) {}
