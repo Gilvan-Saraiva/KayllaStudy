@@ -16,11 +16,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
-router.get('/', userController.hello);
 
-// Rotas CRUD
-router.post('/users', userController.cadastraUsuario); // Criar usuário
 
+// Rotas CRUD USERS
+router.post('/users', userController.cadastraUsuario);
+router.get('/users', userController.getUsers); 
+router.put('/users/:email', userController.updateUsers);
+router.delete('/users/:email', userController.deleteUsers);
 
 
 module.exports = router;
