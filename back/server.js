@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const routes = require('./Routes/api');
@@ -9,6 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors({
+    origin: ['https://emprego-web.vercel.app', 'http://localhost:4200'],
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+}));
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

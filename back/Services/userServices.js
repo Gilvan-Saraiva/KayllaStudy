@@ -11,7 +11,7 @@ const createUser = async (userData) => {
             return { response: 400, message: "Usuario ja cadastrado" }
         };
         await newUser.save();
-        return { response: 201, message: "Usuario Criado" };
+        return { response: 201, message: "Usuario Criado", status: "success" };
     } catch (error) {
         throw new Error(error);
     }

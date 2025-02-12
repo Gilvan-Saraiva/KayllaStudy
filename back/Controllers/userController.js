@@ -6,7 +6,7 @@ exports.cadastraUsuario = async (req, res) => {
     console.log(data)
     try {
         const ans = await userServices.createUser(data);
-        return res.status(ans.response).send(ans.message);
+        return res.status(ans.response).json({ message: ans.message });
 
     } catch (error) {
         throw new Error(error);
