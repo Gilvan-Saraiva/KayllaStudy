@@ -22,6 +22,7 @@ exports.getUsers = async (req, res) => {
     }
 };
 
+
 exports.updateUsers = async (req, res) => {
     const email = req.params.email;
     const updateData = req.body;
@@ -40,5 +41,14 @@ exports.deleteUsers = async (req, res) => {
         return res.status(ans.response).send(ans.message);
     } catch (error) {
         throw new Error(error);
+    }
+};
+exports.getUsersByRole = async (req, res) => {
+    const { role } = req.params;
+    try {
+        const ans = await userServices.getUsersByRole(role);
+        return res.status(ans.response).json(ans.payload || { message: ans.message });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 };

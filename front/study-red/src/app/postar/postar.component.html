@@ -25,7 +25,10 @@
     <div class="form-group">
       <label for="alunos">Selecione os Alunos</label>
       <select id="alunos" class="form-control" [(ngModel)]="selectedAlunos" name="alunos" multiple>
-        <option *ngFor="let aluno of alunos" [value]="aluno._id">{{ aluno.nome }}</option>
+        <option *ngFor="let aluno of alunos" [value]="aluno._id">
+          {{ aluno.nome || aluno.name || aluno.email }}
+        </option>
+
       </select>
     </div>
 

@@ -61,13 +61,25 @@ const deleteUser = async (email) => {
     } catch (error) {
         throw new Error(error);
     }
+}
     
-};
-
-module.exports = {
-    createUser,
-    getUsers,
-    getUserByEmail,
-    updateUser,
-    deleteUser,
-};
+    const getUsersByRole = async (role) => {
+        try {
+            const users = await User.find({ role });
+            if (users.length === 0) {
+                return { response: 404, message: "Nenhum usuário encontrado com essa role" };
+            }
+            return { response: 200, payload: users };
+        } catch (error) {
+            return { response: 500, message: "Erro ao buscar usuários" };
+        }
+    };
+    
+    module.exports = {
+        createUser,
+        getUsers,
+        getUserByEmail,
+        updateUser,
+        deleteUser,
+        getUsersByRole
+    };

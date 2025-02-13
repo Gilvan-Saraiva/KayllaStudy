@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,6 +17,6 @@ export class UserService {
     return this.http.post(this.apiUrl, userData);
   }
   getAlunos(): Observable<any> {
-    return this.http.get('/api/users?role=aluno');
+    return this.http.get(`${this.apiUrl}/role/aluno`);
   }
 }

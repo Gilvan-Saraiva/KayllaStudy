@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { MaterialService } from '../services/material.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { MaterialService } from '../services/material.service';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -25,13 +25,16 @@ export class PostarComponent implements OnInit {
   constructor(
     private userService: UserService,
     private materialService: MaterialService,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdRef: ChangeDetectorRef // Força a atualização da tela
   ) {}
 
   ngOnInit() {
     this.userService.getAlunos().subscribe(
-      (alunos) => {
-        this.alunos = alunos;
+      (response) => {
+        console.log('Dados recebidos:', response); // Debug
+        this.alunos = response.payload || response; // Ajuste conforme o backend
+        this.cdRef.detectChanges(); // Força atualização do Angular
       },
       (error) => {
         console.error('Erro ao buscar alunos:', error);

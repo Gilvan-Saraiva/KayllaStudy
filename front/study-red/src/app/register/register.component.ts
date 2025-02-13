@@ -13,20 +13,22 @@ import { UserService } from '../services/user.service';
 export class RegisterComponent {
  constructor(private router: Router, private userService: UserService) {}
 
-  onSubmit(form: any) {
-    if (form.valid) {
-      this.userService.registerUser(form.value).subscribe(
-        response => {
-          console.log('Resposta da API:', response);
-          if (response && response.message) {
-            console.log('Usuário cadastrado com sucesso');
-            this.router.navigateByUrl('/login'); // Redirecionar para login após sucesso
+ 
+    onSubmit(form: any) {
+      if (form.valid) {
+        const formData = { ...form.value, role: '' }; // Adicionando o campo role com valor vazio
+        this.userService.registerUser(formData).subscribe(
+          response => {
+            console.log('Resposta da API:', response);
+            if (response && response.message) {
+              console.log('Usuário cadastrado com sucesso');
+              this.router.navigateByUrl('/login'); // Redirecionar para login após sucesso
+            }
+          },
+          error => {
+            console.error('Erro ao cadastrar usuário', error);
           }
-        },
-        error => {
-          console.error('Erro ao cadastrar usuário', error);
-        }
-      );
+        );
+      }
     }
-}
 }

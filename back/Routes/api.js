@@ -33,6 +33,7 @@ router.post('/users', userController.cadastraUsuario);
 router.get('/users', userController.getUsers); 
 router.put('/users/:email', userController.updateUsers);
 router.delete('/users/:email', userController.deleteUsers);
+router.get('/users/role/:role', userController.getUsersByRole);
 
 // Rotas PDF
 router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);

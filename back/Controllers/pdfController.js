@@ -1,4 +1,4 @@
-const pdfServices = require('../Services/pdfServices');
+const pdfServices = require('../Services/pdfServices')
 
 exports.uploadPDF = async (req, res) => {
     try {

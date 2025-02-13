@@ -2,7 +2,6 @@ body {
   margin: 0;
   font-family: 'Arial', sans-serif;
   color: #333;
-  overflow: hidden;
   background-color: #e8f1f2;
 }
 
@@ -11,14 +10,14 @@ body {
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  background: url('../../../assets/logo.png') no-repeat right center;
-  background-size: 40%; /* Tamanho da imagem para desktop */
-  padding-left: 10%; /* Padding para desktop */
+  background: url('/assets/logo.png') no-repeat right center;
+  background-size: 40%;
+  padding-left: 10%;
   position: relative;
 }
 
 h1 {
-  font-size: 4rem; /* Tamanho da fonte para desktop */
+  font-size: 4rem;
   color: #2c3e50;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0;
@@ -33,35 +32,86 @@ h1 {
   width: 100%;
   height: 100%;
   z-index: 0;
-
 }
 
-/* Estilos para telas menores (celulares) */
+/* Estilos responsivos */
 @media (max-width: 768px) {
   .page-background {
-    justify-content: center; /* Centraliza o conteúdo em telas menores */
-    padding-left: 5%; /* Reduz o padding para telas menores */
-    background-position: center; /* Centraliza a imagem de fundo */
-    background-size: 70%; /* Aumenta o tamanho da imagem para melhor visibilidade */
-
+    justify-content: center;
+    padding-left: 5%;
+    background-position: center;
+    background-size: 70%;
   }
 
   h1 {
-    font-size: 2.5rem; /* Reduz o tamanho da fonte para telas menores */
-    text-align: center; /* Centraliza o texto */
+    font-size: 2.5rem;
+    text-align: center;
   }
 }
 
-/* Estilos para telas muito pequenas (ex.: smartphones pequenos) */
 @media (max-width: 480px) {
   .page-background {
-    background-size: 90%; /* Aumenta ainda mais o tamanho da imagem */
-    padding-left: 2%; /* Padding mínimo */
+    background-size: 90%;
+    padding-left: 2%;
   }
 
   h1 {
-    font-size: 2rem; /* Tamanho de fonte ainda menor */
+    font-size: 2rem;
   }
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.review-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
 
 
+.user-info {
+  margin-bottom: 105px;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.user-role {
+  color: #666;
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+}
+
+.review-text {
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .reviews {
+      grid-template-columns: 1fr;
+  }
+}

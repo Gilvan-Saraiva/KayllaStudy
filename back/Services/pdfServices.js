@@ -1,7 +1,7 @@
-const User = require('../Models/User');
+const User = require('../models/users');
 
 // Função para lidar com o upload de PDF
-exports.handleFileUpload = async (file, userId) => {
+const handleFileUpload = async (file, userId) => {
     if (!file) {
         throw new Error('Nenhum arquivo enviado ou arquivo não é PDF.');
     }
