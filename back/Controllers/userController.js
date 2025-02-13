@@ -29,7 +29,7 @@ exports.updateUsers = async (req, res) => {
         const ans = await userServices.updateUser(email, updateData);
         return res.status(ans.response).send(ans.message);
     } catch (error) {
-        
+        throw new Error(error);
     }
 };
 

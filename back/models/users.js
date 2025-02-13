@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     pdfPath: { // Novo campo para armazenar o caminho do PDF
-        type: String,
-        default: null,
+        type: [String],
+        default: [],
     },
 });
 

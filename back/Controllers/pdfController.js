@@ -1,4 +1,4 @@
-const pdfServices = require('../Services/pdfServices');
+const pdfService = require('../Services/pdfServices')
 
 exports.uploadPDF = async (req, res) => {
     try {
@@ -6,10 +6,10 @@ exports.uploadPDF = async (req, res) => {
         const userId = req.body.userId; // ID do usuário (opcional)
 
         // Chama o service para lidar com o upload
-        const ans = await pdfServices.handleFileUpload(file, userId);
+        const ans = await pdfService.handleUpload(file, userId);
 
-        res.status(ans.response).json(result);
+        return res.status(ans.response).send(ans.message)
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.log(error);
     }
 };
