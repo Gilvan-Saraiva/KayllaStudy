@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema({
         type: [String],
         default: [],
     },
+    youtubeURL: { // Novo campo para armazenar o caminho do YouTube
+        type: [String],
+        default: null,
+    },
+    materiaisAssociados: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Material',
+    },
 });
 
 module.exports = mongoose.model('User', userSchema);
