@@ -37,6 +37,7 @@ router.delete('/users/:email', userController.deleteUsers);
 router.get('/users/role/:role', userController.getUsersByRole);
 
 // Rotas PDF
+
 router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);
 
 // Rotas Materiais

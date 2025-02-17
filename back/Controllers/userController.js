@@ -1,6 +1,7 @@
 const userServices = require('../Services/userServices');
 
 
+
 exports.cadastraUsuario = async (req, res) => {
     const data = req.body;
     console.log(data)

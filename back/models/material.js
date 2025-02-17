@@ -12,6 +12,7 @@ const materialSchema = new mongoose.Schema({
     pdfPath: {
         type: [String],
         default: [],
+        required: true
     },
     youtubeURL: {
         type: [String],
@@ -19,7 +20,7 @@ const materialSchema = new mongoose.Schema({
     },
     usuariosAssociados: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'User',
+        ref: 'User', required: true,
     },
 });
 
