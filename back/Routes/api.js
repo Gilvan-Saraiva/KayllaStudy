@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const userController = require('../Controllers/userController');
 const pdfController = require('../Controllers/pdfController');
+const materialController = require('../Controllers/materialController');
 
 
 // Configuração do Multer para upload de PDF
@@ -37,5 +38,8 @@ router.get('/users/role/:role', userController.getUsersByRole);
 
 // Rotas PDF
 router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);
+
+// Rotas Materiais
+router.post('/materiais', upload.array('pdfFiles'), materialController.postMaterial);
 
 module.exports = router;
