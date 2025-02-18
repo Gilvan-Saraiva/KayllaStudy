@@ -12,7 +12,6 @@ const materialSchema = new mongoose.Schema({
     pdfPath: {
         type: [String],
         default: [],
-        required: true
     },
     youtubeURL: {
         type: [String],
