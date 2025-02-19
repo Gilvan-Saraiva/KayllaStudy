@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService, LoginResponse } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,9 +14,13 @@ export class NavbarComponent {
   constructor(private authService: AuthService) {}
 
 
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
   isAdmin(): boolean {
-    const user = this.authService.getUser();
-    return user && user.role === 'admin';
+    const user: LoginResponse | null = this.authService.getUser();
+    return !!user && user.user.role === 'admin';  // Note o acesso a user.user.role
   }
   redirectToLogin() {
     window.location.href = '/login';

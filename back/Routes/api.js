@@ -27,7 +27,7 @@ const upload = multer({
     }
 });
 
-
+router.post('/login', userController.loginUser);
 
 // Rotas CRUD USERS
 router.post('/users', userController.cadastraUsuario);
@@ -35,7 +35,7 @@ router.get('/users', userController.getUsers);
 router.put('/users/:email', userController.updateUsers);
 router.delete('/users/:email', userController.deleteUsers);
 router.get('/users/role/:role', userController.getUsersByRole);
-
+//s
 // Rotas PDF
 
 router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, NgZone } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, AfterViewInit, NgZone, PLATFORM_ID, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +9,20 @@ import { Component, AfterViewInit, NgZone } from '@angular/core';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements AfterViewInit {
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: any) {}
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.ngZone.runOutsideAngular(() => {
-        const elements = document.querySelectorAll('.collapsible-caption');
-        elements.forEach((element) => {
-          element.addEventListener('click', function (this: HTMLElement) {
-            this.classList.toggle('expanded');
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        this.ngZone.runOutsideAngular(() => {
+          const elements = document.querySelectorAll('.collapsible-caption');
+          elements.forEach((element) => {
+            element.addEventListener('click', function (this: HTMLElement) {
+              this.classList.toggle('expanded');
+            });
           });
         });
-      });
-    }, 100);
+      }, 100);
+    }
   }
 }

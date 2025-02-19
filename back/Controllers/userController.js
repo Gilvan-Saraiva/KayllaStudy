@@ -1,6 +1,14 @@
 const userServices = require('../Services/userServices');
 
-
+exports.loginUser = async (req, res) => {
+    const data = req.body;
+    try {
+        const ans = await userServices.loginUser(data);
+        return res.status(ans.response).json(ans.payload || { message: ans.message });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 
 exports.cadastraUsuario = async (req, res) => {
     const data = req.body;
