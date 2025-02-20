@@ -1,7 +1,7 @@
 // Services/materialServices.js
 const Material = require('../models/material');
 const User = require('../models/users');
-
+const mongoose = require('mongoose');
 const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles = []) => {
     try {
         // Garanta que pdfPath seja um array de caminhos de arquivos
@@ -11,12 +11,21 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
         const youtubeURLArray = Array.isArray(youtubeURL) ? youtubeURL : [youtubeURL];
 
         // Crie o novo material
+        const validUsersId = usersId.map(id => {
+            id = id.replace(/^"+|"+$/g, '');
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+              throw new Error(`O id "${id}" não é um ObjectId válido.`);
+            }
+            return new mongoose.Types.ObjectId(id);
+          });
+          
+
         const novoMaterial = new Material({
             title,
             description,
             pdfPath,
             youtubeURL: youtubeURLArray,
-            usuariosAssociados: usersId,
+            usuariosAssociados: validUsersId,
         });
 
         // Salve o material no banco de dados

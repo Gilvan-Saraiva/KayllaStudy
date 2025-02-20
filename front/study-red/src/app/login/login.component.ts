@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('password')?.value
     ).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         this.error = error.error.message || 'Erro ao fazer login';

@@ -3,35 +3,70 @@
   <form (ngSubmit)="onSubmit()" #materialForm="ngForm">
     <div class="form-group">
       <label for="titulo">Título</label>
-      <input type="text" id="titulo" class="form-control" [(ngModel)]="material.titulo" name="titulo" required>
+      <input
+        type="text"
+        id="titulo"
+        class="form-control"
+        [(ngModel)]="material.titulo"
+        name="title"
+        required
+      />
     </div>
 
     <div class="form-group">
       <label for="descricao">Descrição</label>
-      <textarea id="descricao" class="form-control" [(ngModel)]="material.descricao" name="descricao"></textarea>
+      <textarea
+        id="descricao"
+        class="form-control"
+        [(ngModel)]="material.descricao"
+        name="description"
+      ></textarea>
     </div>
 
     <div class="form-group">
-      <label for="youtubeLinks">Links do YouTube</label>
-      <input type="text" id="youtubeLinks" class="form-control" [(ngModel)]="material.youtubeLinks" name="youtubeLinks">
+      <label for="youtubeURL">Links do YouTube</label>
+      <!--
+           Alterei o nome do model para "youtubeURL" para ficar consistente com o backend.
+           Os links devem ser separados por vírgula.
+      -->
+      <input
+        type="text"
+        id="youtubeURL"
+        class="form-control"
+        [(ngModel)]="material.youtubeURL"
+        name="youtubeURL"
+      />
       <small>Separe os links com vírgula</small>
     </div>
 
     <div class="form-group">
-      <label for="pdf">Upload de PDFs</label>
-      <input type="file" id="pdf" class="form-control" (change)="onFileChange($event)" multiple>
+      <label for="pdfFiles">Upload de PDFs</label>
+      <input
+        type="file"
+        id="pdfFiles"
+        class="form-control"
+        (change)="onFileChange($event)"
+        multiple
+      />
     </div>
 
     <div class="form-group">
       <label for="alunos">Selecione os Alunos</label>
-      <select id="alunos" class="form-control" [(ngModel)]="selectedAlunos" name="alunos" multiple>
+      <select
+        id="alunos"
+        class="form-control"
+        [(ngModel)]="selectedAlunos"
+        name="alunos"
+        multiple
+      >
         <option *ngFor="let aluno of alunos" [value]="aluno._id">
           {{ aluno.nome || aluno.name || aluno.email }}
         </option>
-
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!materialForm.form.valid">Postar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!materialForm.form.valid">
+      Postar
+    </button>
   </form>
 </div>

@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     youtubeURL: { // Novo campo para armazenar o caminho do YouTube
         type: [String],
-        default: null,
+        default: [],
     },
     materiaisAssociados: {
         type: [mongoose.Schema.Types.ObjectId],

@@ -10,13 +10,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './postar.component.html',
-  styleUrl: './postar.component.css'
+  styleUrls: ['./postar.component.css']
 })
 export class PostarComponent implements OnInit {
   material = {
     titulo: '',
     descricao: '',
-    youtubeLinks: '',
+    youtubeURL: '', // Alinhado com o nome do campo no template
     pdfs: [] as File[]
   };
   alunos: any[] = [];
@@ -26,15 +26,16 @@ export class PostarComponent implements OnInit {
     private userService: UserService,
     private materialService: MaterialService,
     private http: HttpClient,
-    private cdRef: ChangeDetectorRef // Força a atualização da tela
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.userService.getAlunos().subscribe(
       (response) => {
-        console.log('Dados recebidos:', response); // Debug
-        this.alunos = response.payload || response; // Ajuste conforme o backend
-        this.cdRef.detectChanges(); // Força atualização do Angular
+        console.log('Dados recebidos:', response);
+        // Ajusta conforme a estrutura do retorno do backend
+        this.alunos = response.payload || response;
+        this.cdRef.detectChanges();
       },
       (error) => {
         console.error('Erro ao buscar alunos:', error);
@@ -51,13 +52,23 @@ export class PostarComponent implements OnInit {
 
   onSubmit() {
     const formData = new FormData();
-    formData.append('titulo', this.material.titulo);
-    formData.append('descricao', this.material.descricao);
-    formData.append('youtubeLinks', this.material.youtubeLinks);
+    formData.append('title', this.material.titulo);
+    formData.append('description', this.material.descricao);
+
+    // Converter a string de links do YouTube em array, se houver valor,
+    // e enviar cada link separadamente para que o backend os interprete como array.
+    const youtubeURLs = this.material.youtubeURL
+      ? this.material.youtubeURL.split(',').map(url => url.trim()).filter(url => url)
+      : [];
+    youtubeURLs.forEach(url => formData.append('youtubeURL', url));
+
+    // Anexa os arquivos PDF
     this.material.pdfs.forEach((pdf) => {
-      formData.append('pdfs', pdf, pdf.name);
+      formData.append('pdfFiles', pdf, pdf.name);
     });
-    formData.append('alunos', JSON.stringify(this.selectedAlunos));
+
+    // Envia os IDs dos usuários como string separada por vírgulas
+    formData.append('usersId', this.selectedAlunos.join(','));
 
     this.materialService.postMaterial(formData).subscribe(
       () => {

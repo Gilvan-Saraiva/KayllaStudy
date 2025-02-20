@@ -7,12 +7,11 @@ import { AuthService, LoginResponse } from '../services/auth.service';
   selector: 'app-navbar',
   imports: [FormsModule, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrls: ['./navbar.component.css'],
   standalone: true
 })
 export class NavbarComponent {
   constructor(private authService: AuthService) {}
-
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
@@ -20,9 +19,19 @@ export class NavbarComponent {
 
   isAdmin(): boolean {
     const user: LoginResponse | null = this.authService.getUser();
-    return !!user && user.user.role === 'admin';  // Note o acesso a user.user.role
+    return !!user && user.user.role === 'admin';
   }
+
   redirectToLogin() {
     window.location.href = '/login';
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  getUserName(): string {
+    const user = this.authService.getUser();
+    return user ? user.user.name : '';
   }
 }

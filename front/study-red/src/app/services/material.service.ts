@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MaterialService {
-  private apiUrl = '/api/materials';
+  private apiUrl = 'http://localhost:3000/api/materiais';
 
   constructor(private http: HttpClient) {}
 
