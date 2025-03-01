@@ -1,1 +1,12 @@
-<iframe width="560" height="315" [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+<div *ngFor="let videoUrl of videoUrls">
+  <iframe width="560" height="315" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
+
+<div *ngFor="let material of materiais">
+  <h3>{{ material.title }}</h3>
+  <p>{{ material.description }}</p>
+  <div *ngFor="let pdf of material.pdfPath">
+    <a [href]="pdf" target="_blank">Baixar PDF</a>
+  </div>
+</div>

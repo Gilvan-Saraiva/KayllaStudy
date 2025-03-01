@@ -6,11 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MaterialService {
-  private apiUrl = 'http://localhost:3000/api/materiais';
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
+  getMateriaisPorUsuario(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/usuario/${userId}`);
+}
 
   postMaterial(formData: FormData): Observable<any> {
-    return this.http.post(this.apiUrl, formData);
+    return this.http.post(`${this.apiUrl}/materiais/`, formData);
   }
 }

@@ -4,7 +4,7 @@ const multer = require('multer');
 const userController = require('../Controllers/userController');
 const pdfController = require('../Controllers/pdfController');
 const materialController = require('../Controllers/materialController');
-
+const Material = require('../models/material');
 
 // Configuração do Multer para upload de PDF
 const storage = multer.diskStorage({
@@ -42,5 +42,17 @@ router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);
 
 // Rotas Materiais
 router.post('/materiais', upload.array('pdfFiles'), materialController.postMaterial);
+
+router.get('/usuario/:userId', async (req, res) => {
+    console.log('ID do usuário:', req.params.userId); 
+    try {
+        const materiais = await Material.find({ usuariosAssociados: req.params.userId });
+        
+        res.json(materiais);
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar materiais.' });
+    }
+});
+
 
 module.exports = router;
