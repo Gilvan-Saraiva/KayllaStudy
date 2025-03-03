@@ -12,7 +12,6 @@ exports.loginUser = async (req, res) => {
 
 exports.cadastraUsuario = async (req, res) => {
     const data = req.body;
-    console.log(data)
     try {
         const ans = await userServices.createUser(data);
         return res.status(ans.response).json({ message: ans.message });
@@ -63,16 +62,18 @@ exports.getUsersByRole = async (req, res) => {
 };
 
 exports.recuperaSenha = async (req, res) => {
-    const data = req.body;
-
     try {
-        const ans = await userServices.recuperaSenha(data);
+        if (!req.body || !req.body.email) {
+            return res.status(400).send("O campo 'email' é obrigatório.");
+        }
+
+        const email = req.body.email;
+        const ans = await userServices.recuperaSenha(email);
         return res.status(ans.response).send(ans.message);
     } catch (error) {
-        throw new Error(error);
+        return res.status(500).send("Erro interno do servidor.");
     }
-}
-
+};
 exports.trocaSenha = async (req, res) => {
     const data = req.body;
 
