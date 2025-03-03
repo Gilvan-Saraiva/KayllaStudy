@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  redirectToRegister() {
+    this.router.navigate(['/register']);
+  }
+
   onSubmit() {
     if (this.loginForm.invalid) {
       return;

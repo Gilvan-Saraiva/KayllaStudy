@@ -1,36 +1,37 @@
 <div class="login-container">
-  <div class="login-left">
-    <h2>Login! 👋</h2>
+  <div class="login-box">
+    <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
         <input
-          type="email"
+          type="text"
           id="email"
           formControlName="email"
-          placeholder="test@email.com"
+          placeholder="Digite seu endereço de email"
           [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
         >
         <div class="invalid-feedback" *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
           Email é obrigatório
         </div>
-        <div class="invalid-feedback" *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
-          Email inválido
-        </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Senha</label>
         <input
           type="password"
           id="password"
           formControlName="password"
-          placeholder="******"
+          placeholder="Digite sua senha"
           [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
         >
         <div class="invalid-feedback" *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">
           Senha é obrigatória
         </div>
+      </div>
+
+      <div class="form-group">
+        <a href="/esqueceu-senha" class="forgot-password">Esqueceu Senha?</a>
       </div>
 
       <div class="alert alert-danger" *ngIf="error">
@@ -39,12 +40,12 @@
 
       <button
         type="submit"
-        class="btn btn-signin"
+        class="btn btn-login"
         [disabled]="loginForm.invalid || loading"
       >
-        {{ loading ? 'Carregando...' : 'Logar' }}
+        {{ loading ? 'Loading...' : 'Login' }}
       </button>
     </form>
-    <p>Ainda não possui uma conta? <a routerLink="/register">Crie agora</a></p>
+    <p class="signup-text">Não é um membro? <a href="/register" (click)="redirectToRegister()">Cadastre-se Agora</a></p>
   </div>
 </div>

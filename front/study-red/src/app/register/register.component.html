@@ -1,58 +1,93 @@
-<div class="form-container">
-  <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" class="form-signin login-form">
-    <h3 class="txt-color-mg">Sign Up</h3>
-
-    <!-- Nome -->
-    <label for="firstName" class="sr-only">Nome:</label>
-    <input type="text" id="firstName" name="name" class="form-control" ngModel required>
-    <div *ngIf="registrationForm.controls['name']?.invalid && (registrationForm.controls['name'].dirty || registrationForm.controls['name'].touched)" class="txt-error">
-      Nome é obrigatório.
-    </div>
-
-    <!-- Email -->
-    <label for="inputEmail" class="sr-only">Email:</label>
-    <input name="email" type="email" id="inputEmail" class="form-control" ngModel required email>
-    <div *ngIf="registrationForm.controls['email']?.invalid && (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)">
-      <div *ngIf="registrationForm.controls['email'].errors?.['required']" class="txt-error">
-        Email é obrigatório.
+<div class="register-container">
+  <div class="register-box">
+    <h2>Registro</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Nome -->
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Digite seu nome"
+          [class.is-invalid]="registerForm.controls['name'].invalid && registerForm.controls['name'].touched"
+        >
+        <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="txt-error">
+          <div *ngIf="registerForm.controls['name'].errors?.['required']">
+            O nome é obrigatório.
+          </div>
+        </div>
       </div>
-      <div *ngIf="registrationForm.controls['email'].errors?.['email']" class="txt-error">
-        Insira um email válido.
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Digite seu email"
+          [class.is-invalid]="registerForm.controls['email'].invalid && registerForm.controls['email'].touched"
+        >
+        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="txt-error">
+          <div *ngIf="registerForm.controls['email'].errors?.['required']">
+            O email é obrigatório.
+          </div>
+          <div *ngIf="registerForm.controls['email'].errors?.['email']">
+            Por favor, insira um email válido.
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Senha -->
-    <label for="password" class="sr-only">Senha:</label>
-    <input type="password" id="password" name="password" class="form-control" ngModel minlength="8" required>
-    <div *ngIf="registrationForm.controls['password']?.invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
-      <div *ngIf="registrationForm.controls['password'].errors?.['required']" class="txt-error">
-        A senha é obrigatória.
+  
+      <!-- Senha -->
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Digite sua senha"
+          [class.is-invalid]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"
+        >
+        <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="txt-error">
+          <div *ngIf="registerForm.controls['password'].errors?.['required']">
+            A senha é obrigatória.
+          </div>
+          <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+            A senha deve ter pelo menos 8 caracteres.
+          </div>
+        </div>
       </div>
-      <div *ngIf="registrationForm.controls['password'].errors?.['minlength']" class="txt-error">
-        A senha deve ter pelo menos 8 caracteres.
+  
+      <!-- Confirmação de Senha -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirme a senha</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="Confirme sua senha"
+          [class.is-invalid]="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched"
+        >
+        <div *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched" class="txt-error">
+          <div *ngIf="registerForm.controls['confirmPassword'].errors?.['required']">
+            A confirmação da senha é obrigatória.
+          </div>
+          <div *ngIf="registerForm.controls['confirmPassword'].errors?.['minlength']">
+            A senha deve ter pelo menos 8 caracteres.
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Confirmação de Senha -->
-    <label for="confirmPassword" class="sr-only">Confirme a senha:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" ngModel minlength="8" required>
-    <div *ngIf="registrationForm.controls['confirmPassword']?.invalid && (registrationForm.controls['confirmPassword'].dirty || registrationForm.controls['confirmPassword'].touched)">
-      <div *ngIf="registrationForm.controls['confirmPassword'].errors?.['required']" class="txt-error">
-        A confirmação da senha é obrigatória.
+  
+      <!-- Mensagem de erro para senhas não coincidentes -->
+      <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.controls['confirmPassword'].touched" class="txt-error">
+        As senhas não coincidem.
       </div>
-      <div *ngIf="registrationForm.controls['confirmPassword'].errors?.['minlength']" class="txt-error">
-        A senha deve ter pelo menos 8 caracteres.
-      </div>
-    </div>
- <!-- Campo oculto para role -->
- <input type="hidden" name="role" ngModel>
-    <!-- Botão de Cadastro -->
-    <div class="row">
-      <div class="col-4">
-        <button class="btn btn-lg btn-primary btn-block mt-2 right-corner" [disabled]="!registrationForm.valid" type="submit">
-          Cadastrar
-        </button>
-      </div>
-    </div>
-  </form>
+  
+      <!-- Botão de Envio -->
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+        Registrar
+      </button>
+    </form>
+  </div>
 </div>
