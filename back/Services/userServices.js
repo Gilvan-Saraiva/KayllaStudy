@@ -2,6 +2,8 @@ const { response } = require('express');
 const User = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+import { transporter } from "../helpers/emailHelper.js";
+
 
 // Função auxiliar para hash de senha
 const hashPassword = async (password) => {
@@ -129,6 +131,66 @@ const getUsersByRole = async (role) => {
     }
 };
 
+const recuperaSenha = async (data) => {
+    try {
+        const existeUsuario = await getUserByEmail(data.email);
+        if (existeUsuario.rowCount === 0) {
+            return { response: 404, message: "Usuario não encontrado" };
+        }
+
+        const emailUsuario = existeUsuario[0].email;
+        const resetToken = crypto.randomBytes(20).toString('hex');
+        await updateUser(data.email, { resetToken: resetToken })
+
+        const mailOptions = {
+            from: 'studyred78@gmail.com',
+            to: emailUsuario,
+            subject: 'Recuperação de Senha',
+            text: `text: O seu codigo de redefinição de senha é: ${resetToken}`,
+        };
+        try {
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return { response: 500, message: "Erro ao enviar o e-mail de recuperação de senha" };
+                }
+                res.send('E-mail de recuperação de senha enviado com sucesso');
+            })
+        } catch (error) {
+            throw new Error(error);
+        }
+        return { response: 200, message: "email de recuperação enviado" };
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+const trocaSenha = async (data) => {
+    const { email, tokenReset, novaSenha } = data
+    try {
+        const user = await getUserByEmail(email);
+        if (!user) {
+            return { response: 404, message: "Usuário não encontrado" };
+        }
+        if (user.resetToken !== tokenReset) {
+            return { response: 400, message: "Token inválido" };
+        }
+        const hashedPassword = await hashPassword(novaSenha);
+
+        await User.findOneAndUpdate(
+            { email: email },
+            { 
+                password: hashedPassword,
+                resetToken: null // Remove o token de redefinição após a troca de senha
+            },
+            { new: true }
+        );
+        
+        return { response: 200, message: "senha alterada" };
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = {
     createUser,
     getUsers,
@@ -136,5 +198,7 @@ module.exports = {
     updateUser,
     deleteUser,
     getUsersByRole,
-    loginUser
+    loginUser,
+    recuperaSenha,
+    trocaSenha
 };

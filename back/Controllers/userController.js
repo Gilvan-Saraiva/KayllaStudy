@@ -61,3 +61,25 @@ exports.getUsersByRole = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.recuperaSenha = async (req, res) => {
+    const data = req.body;
+
+    try {
+        const ans = await userServices.recuperaSenha(data);
+        return res.status(ans.response).send(ans.message);
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+exports.trocaSenha = async (req, res) => {
+    const data = req.body;
+
+    try {
+        const ans = await userServices.trocaSenha(data);
+        return res.status(ans.response).send(ans.message);
+    } catch (error) {
+        throw new Error(error);
+    }
+}
