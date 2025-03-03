@@ -2,6 +2,10 @@ const { response } = require('express');
 const User = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { transporter } = require("../helpers/emailHelper.js");
+const crypto = require('crypto');
+
+
 
 // Função auxiliar para hash de senha
 const hashPassword = async (password) => {
@@ -55,7 +59,6 @@ const createUser = async (userData) => {
     try {
         const existeUsuario = await getUserByEmail(userData.email);
         if (existeUsuario) {
-            console.log("ja existe");
             return { response: 400, message: "Usuario ja cadastrado" };
         }
 
@@ -129,6 +132,76 @@ const getUsersByRole = async (role) => {
     }
 };
 
+const recuperaSenha = async (email) => {
+    try {
+        const existeUsuario = await getUserByEmail(email);
+        
+        if (existeUsuario.rowCount === 0) {
+            return { response: 404, message: "Usuário não encontrado" };
+        }
+
+        const resetToken = generateResetToken(6);
+
+        // Atualiza o usuário com o token de recuperação
+        await updateUser(email, { resetToken }); // Corrigido
+
+        const mailOptions = {
+            from: 'studyred78@gmail.com',
+            to: email,
+            subject: 'Recuperação de Senha',
+            text: `O seu código de redefinição de senha é: ${resetToken}`,
+        };
+
+        // Usando `await` para aguardar o envio do e-mail corretamente
+        try {
+            await transporter.sendMail(mailOptions);
+            return { response: 200, message: "E-mail de recuperação enviado com sucesso" };
+        } catch (error) {
+            return { response: 500, message: "Erro ao enviar o e-mail de recuperação de senha" };
+        }
+
+    } catch (error) {
+        return { response: 500, message: "Erro interno no servidor" };
+    }
+};
+
+const trocaSenha = async (data) => {
+    const { email, tokenReset, novaSenha } = data;
+    try {
+        const user = await getUserByEmail(email);
+        if (!user) {
+            return { response: 404, message: "Usuário não encontrado" };
+        }
+        if (user.resetToken !== tokenReset) {
+            return { response: 400, message: "Token inválido" };
+        }
+        const hashedPassword = await hashPassword(novaSenha);
+
+        await User.findOneAndUpdate(
+            { email: email },
+            { 
+                password: hashedPassword,
+                resetToken: null // Remove o token de redefinição após a troca de senha
+            },
+            { new: true }
+        );
+        
+        return { response: 200, message: "senha alterada" };
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+const generateResetToken = (length = 6) => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let token = '';
+    for (let i = 0; i < length; i++) {
+        token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return token;
+};
+
+
 module.exports = {
     createUser,
     getUsers,
@@ -136,5 +209,7 @@ module.exports = {
     updateUser,
     deleteUser,
     getUsersByRole,
-    loginUser
+    loginUser,
+    recuperaSenha,
+    trocaSenha
 };

@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Material',
     },
+    resetToken: {
+        type: String
+    }
 });
 
 module.exports = mongoose.model('User', userSchema);
