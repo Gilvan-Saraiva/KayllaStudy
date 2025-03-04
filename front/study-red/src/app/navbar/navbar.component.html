@@ -25,7 +25,7 @@
       <!-- Exibe o nome do usuário e o botão de logout se estiver autenticado -->
       <form class="d-flex" role="search">
         <button *ngIf="isAuthenticated()" class="btn btn-outline-light" type="button" (click)="logout()">Sair</button>
-        <button *ngIf="!isAuthenticated()" class="btn btn-outline-light" type="button" (click)="redirectToLogin()">Login</button>
+        <button *ngIf="!isAuthenticated() && !isLoginPage()" class="btn btn-outline-light" type="button" (click)="redirectToLogin()">Login</button>
         <span *ngIf="isAuthenticated()" class="navbar-text ms-3">{{ getUserName() }}</span>
       </form>
 

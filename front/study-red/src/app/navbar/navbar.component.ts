@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService, LoginResponse } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import { AuthService, LoginResponse } from '../services/auth.service';
   standalone: true
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
@@ -33,5 +34,9 @@ export class NavbarComponent {
   getUserName(): string {
     const user = this.authService.getUser();
     return user ? user.user.name : '';
+  }
+  
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
   }
 }
