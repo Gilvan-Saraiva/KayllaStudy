@@ -102,6 +102,9 @@ const getUsers = async () => {
         return { response: 404, message: "usuarios não encontrados"};
     }
 };
+const putUsers = async () => {
+    return await User.findOne({ email });
+};
 
 const getUserByEmail = async (email) => {
     return await User.findOne({ email });
@@ -200,7 +203,30 @@ const generateResetToken = (length = 6) => {
     }
     return token;
 };
+const updateUserToAluno = async (req, res) => {
+    try {
+        const { email } = req.body;
 
+        if (!email) {
+            return res.status(400).json({ message: "Email é obrigatório." });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "Usuário não encontrado." });
+        }
+
+       
+        user.role = "aluno";
+        await user.save();
+
+        return res.status(200).json({ message: "Usuário atualizado para aluno com sucesso." });
+    } catch (error) {
+        console.error("Erro ao atualizar usuário para aluno:", error);
+        return res.status(500).json({ message: "Erro interno do servidor." });
+    }
+};
 
 module.exports = {
     createUser,
@@ -211,5 +237,7 @@ module.exports = {
     getUsersByRole,
     loginUser,
     recuperaSenha,
-    trocaSenha
+    trocaSenha,
+    putUsers,
+    updateUserToAluno
 };

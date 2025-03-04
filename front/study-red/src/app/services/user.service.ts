@@ -19,4 +19,11 @@ export class UserService {
   getAlunos(): Observable<any> {
     return this.http.get(`${this.apiUrl}/role/aluno`);
   }
+  getUsers(role: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/role/void`);
+  }
+
+  updateUserToAluno(email: string) {
+    return this.http.put(`${this.apiUrl}/to-aluno`, { email });
+  }
 }

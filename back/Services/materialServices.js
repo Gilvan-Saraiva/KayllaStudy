@@ -8,13 +8,13 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
 
         const youtubeURLArray = Array.isArray(youtubeURL) ? youtubeURL : [youtubeURL];
 
-        // Converter as URLs completas do YouTube para URLs de incorporação
-        const youtubeEmbedUrls = youtubeURLArray.map(url => {
-            const videoIdMatch = url.match(/(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/[^\n\s]*|(?:v|e(?:mbed)?)\/)([\w-]{11}))|(?:https?:\/\/(?:www\.)?youtube\.com\/(?:\S+?[\?&]v=|.*\/v\/)([\w-]{11}))/);
+        // Extrair apenas os IDs dos vídeos do YouTube
+        const youtubeVideoIds = youtubeURLArray.map(url => {
+            const videoIdMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*[?&]v=|embed\/|v\/|shorts\/))([\w-]{11})/);
             if (videoIdMatch && videoIdMatch[1]) {
-                return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
+                return videoIdMatch[1];
             }
-            return url; // Caso não encontre o ID, retorna a URL original (não é ideal, mas pelo menos não quebra o sistema)
+            return url;
         });
 
         const validUsersId = usersId.map(id => {
@@ -29,7 +29,7 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
             title,
             description,
             pdfPath,
-            youtubeURL: youtubeEmbedUrls, // Salva a URL de incorporação
+            youtubeURL: youtubeVideoIds, // Salva apenas os IDs dos vídeos
             usuariosAssociados: validUsersId,
         });
 
@@ -40,7 +40,7 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
                 { _id: { $in: usersId } },
                 {
                     $push: {
-                        youtubeURL: { $each: youtubeEmbedUrls },
+                        youtubeURL: { $each: youtubeVideoIds },
                         pdfPath: { $each: pdfPath },
                         materiaisAssociados: novoMaterial._id
                     }
