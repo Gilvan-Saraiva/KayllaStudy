@@ -44,7 +44,7 @@ export class RegisterComponent {
       return;
     }
 
-    const formData = { ...this.registerForm.value, role: '' }; // Adicionando o campo role com valor vazio
+    const formData = { ...this.registerForm.value, role: 'void' }; // Adicionando o campo role com valor vazio
     this.userService.registerUser(formData).subscribe(
       response => {
         console.log('Resposta da API:', response);

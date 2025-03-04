@@ -25,10 +25,6 @@
 
     <div class="form-group">
       <label for="youtubeURL">Links do YouTube</label>
-      <!--
-           Alterei o nome do model para "youtubeURL" para ficar consistente com o backend.
-           Os links devem ser separados por vírgula.
-      -->
       <input
         type="text"
         id="youtubeURL"
@@ -50,6 +46,7 @@
       />
     </div>
 
+    <!-- Lista de Alunos (para associar material) -->
     <div class="form-group">
       <label for="alunos">Selecione os Alunos</label>
       <select
@@ -69,4 +66,17 @@
       Postar
     </button>
   </form>
+</div>
+
+<!-- Lista de Usuários (para transformar em aluno) -->
+<div class="form-group">
+  <label for="usuarioSelect">Selecionar Usuário para Aluno</label>
+  <select id="usuarioSelect" [(ngModel)]="selectedAlunos" class="form-control" multiple>
+    <option *ngFor="let user of usuarios" [value]="user.email">
+      {{ user.name }} ({{ user.email }})
+    </option>
+  </select>
+
+  <button (click)="updateUserRole(selectedAlunos[0])">Atualizar</button>
+
 </div>

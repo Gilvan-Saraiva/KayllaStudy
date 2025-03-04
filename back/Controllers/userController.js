@@ -83,4 +83,23 @@ exports.trocaSenha = async (req, res) => {
     } catch (error) {
         throw new Error(error);
     }
-}
+};
+exports.updateUserToAluno = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await userServices.getUserByEmail(email);
+
+        if (!user) {
+            return res.status(404).json({ message: "Usuário não encontrado" });
+        }
+
+        user.role = "aluno";
+        await user.save();
+
+        return res.status(200).json({ message: "Usuário atualizado para aluno" });
+    } catch (error) {
+        console.error("Erro ao atualizar usuário:", error);
+        return res.status(500).json({ message: "Erro interno do servidor" });
+    }
+};

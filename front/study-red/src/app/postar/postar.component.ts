@@ -16,10 +16,12 @@ export class PostarComponent implements OnInit {
   material = {
     titulo: '',
     descricao: '',
-    youtubeURL: '', // Alinhado com o nome do campo no template
+    youtubeURL: '',
     pdfs: [] as File[]
   };
-  alunos: any[] = [];
+
+  usuarios: any[] = []; // Para a lista de "Selecionar Usuário para Aluno"
+  alunos: any[] = [];   // Para a lista de "Selecione os Usuários"
   selectedAlunos: string[] = [];
 
   constructor(
@@ -30,17 +32,32 @@ export class PostarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userService.getAlunos().subscribe(
-      (response) => {
-        console.log('Dados recebidos:', response);
-        // Ajusta conforme a estrutura do retorno do backend
-        this.alunos = response.payload || response;
+    this.getUsers();
+    this.getAlunos();
+  }
+
+  // Busca todos os usuários (para transformar em alunos)
+  getUsers() {
+    this.userService.getUsers('void').subscribe({
+      next: (users) => {
+        console.log('Usuários recebidos:', users);
+        this.usuarios = users.payload || users;
         this.cdRef.detectChanges();
       },
-      (error) => {
-        console.error('Erro ao buscar alunos:', error);
-      }
-    );
+      error: (error) => console.error('Erro ao buscar usuários:', error),
+    });
+  }
+
+  // Busca os alunos já cadastrados (para a postagem de material)
+  getAlunos() {
+    this.userService.getAlunos().subscribe({
+      next: (alunos) => {
+        console.log('Alunos recebidos:', alunos);
+        this.alunos = alunos.payload || alunos;
+        this.cdRef.detectChanges();
+      },
+      error: (error) => console.error('Erro ao buscar alunos:', error),
+    });
   }
 
   onFileChange(event: Event) {
@@ -55,19 +72,15 @@ export class PostarComponent implements OnInit {
     formData.append('title', this.material.titulo);
     formData.append('description', this.material.descricao);
 
-    // Converter a string de links do YouTube em array, se houver valor,
-    // e enviar cada link separadamente para que o backend os interprete como array.
     const youtubeURLs = this.material.youtubeURL
       ? this.material.youtubeURL.split(',').map(url => url.trim()).filter(url => url)
       : [];
     youtubeURLs.forEach(url => formData.append('youtubeURL', url));
 
-    // Anexa os arquivos PDF
     this.material.pdfs.forEach((pdf) => {
       formData.append('pdfFiles', pdf, pdf.name);
     });
 
-    // Envia os IDs dos usuários como string separada por vírgulas
     formData.append('usersId', this.selectedAlunos.join(','));
 
     this.materialService.postMaterial(formData).subscribe(
@@ -77,6 +90,20 @@ export class PostarComponent implements OnInit {
       (error) => {
         console.error('Erro ao postar material:', error);
         alert('Erro ao postar material.');
+      }
+    );
+  }
+
+  updateUserRole(email: string) {
+    this.userService.updateUserToAluno(email).subscribe(
+      () => {
+        alert('Usuário atualizado para aluno com sucesso!');
+        this.getUsers(); // Atualiza a lista de usuários
+        this.getAlunos(); // Atualiza a lista de alunos
+      },
+      (error) => {
+        console.error('Erro ao atualizar usuário:', error);
+        alert('Erro ao atualizar usuário.');
       }
     );
   }

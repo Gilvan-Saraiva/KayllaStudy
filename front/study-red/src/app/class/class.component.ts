@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ClassComponent implements OnInit {
   materiais: any[] = [];
-  videoUrls: SafeResourceUrl[] = [];
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -32,11 +31,10 @@ export class ClassComponent implements OnInit {
   carregarMateriais(userId: string): void {
     this.materialService.getMateriaisPorUsuario(userId).subscribe(materiais => {
       this.materiais = materiais;
-      this.videoUrls = materiais.flatMap((m: any) =>
-        m.youtubeURL.map((url: string) =>
-          this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${url}`)
-        )
-      );
     });
+  }
+
+  getVideoUrl(videoId: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`);
   }
 }
