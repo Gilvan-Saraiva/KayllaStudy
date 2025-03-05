@@ -47,6 +47,7 @@
 /* Estilo para o botão de busca */
 .custom-navbar .btn-outline-light {
   border-color: white;
+  border: 3px solid white; /* Borda mais grossa */
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
