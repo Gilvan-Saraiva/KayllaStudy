@@ -21,6 +21,10 @@ export class NavbarComponent {
     const user: LoginResponse | null = this.authService.getUser();
     return !!user && user.user.role === 'admin';
   }
+  isAluno(): boolean {
+    const user: LoginResponse | null = this.authService.getUser();
+    return !!user && user.user.role === 'aluno';
+  }
 
   redirectToLogin() {
     window.location.href = '/login';

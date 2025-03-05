@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Salas</a>
+          <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -15,9 +15,9 @@
           </a>
           <ul class="dropdown-menu">
             <li *ngIf="isAdmin()"><a class="dropdown-item" href="postar">Postar</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li *ngIf="isAluno()"><a class="dropdown-item" href="class">Materiais</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Fag</a></li>
           </ul>
         </li>
       </ul>

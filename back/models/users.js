@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     pdfPath: { // Novo campo para armazenar o caminho do PDF
-        type: [String],
+        type: [Buffer],
         default: [],
     },
     youtubeURL: { // Novo campo para armazenar o caminho do YouTube

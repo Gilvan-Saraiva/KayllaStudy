@@ -10,9 +10,9 @@ const materialSchema = new mongoose.Schema({
         required: true,
     },
     pdfPath: {
-        type: [String],
+        type: [Buffer],
         default: [],
-    },
+    },    
     youtubeURL: {
         type: [String],
         default: [],
