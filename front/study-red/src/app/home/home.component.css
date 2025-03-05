@@ -36,6 +36,7 @@ body, html {
 }
 
 .text-content h1 {
+  width: 100%;
   font-family: 'Oswald', sans-serif;
   font-weight: 700; /* Peso da fonte (ajuste conforme necessário) */
   font-size: 4rem;
@@ -220,5 +221,77 @@ figure.snip1157 .author h5 span {
   .image-content {
     text-align: center;
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-content h1 {
+    font-size: 2.5rem; /* Ajuste o tamanho da fonte para dispositivos móveis */
+    line-height: 1.2; /* Ajuste o line-height para evitar sobreposição */
+    margin-bottom: 10px; /* Reduza o espaçamento inferior */
+  }
+}
+
+@media (max-width: 768px) {
+  .testemonials {
+    height: auto; /* Ajusta a altura para ser automática */
+    padding: 20px 10px; /* Reduz o padding para evitar overflow */
+  }
+
+  .testemonials h1 {
+    margin-top: 20px;
+  }
+
+  figure.snip1157 {
+    width: 100%; /* Faz com que cada testemunho ocupe 100% da largura */
+    max-width: 100%; /* Garante que não ultrapasse o contêiner */
+    margin: 10px 0; /* Ajusta as margens para evitar sobreposição */
+  }
+
+  figure.snip1157 blockquote {
+    padding: 20px 30px; /* Reduz o padding interno para economizar espaço */
+    font-size: 1em; /* Ajusta o tamanho da fonte se necessário */
+    max-height: none; /* Remove a altura máxima para evitar scroll */
+  }
+
+  figure.snip1157 img {
+    margin: 20px 0 0 0; /* Ajusta a margem da imagem */
+  }
+
+  figure.snip1157 .author {
+    position: static; /* Remove o posicionamento absoluto */
+    padding: 10px 0; /* Ajusta o padding do autor */
+    text-align: center; /* Centraliza o nome do autor */
+    transform: none; /* Remove a transformação */
+  }
+}
+
+@media (max-width: 768px) {
+  figure.snip1157 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center; /* Centraliza o texto */
+    width: 90%; /* Largura ajustada para dispositivos móveis */
+    max-width: 90%; /* Largura máxima ajustada */
+    margin: 10px 0; /* Margens ajustadas */
+  }
+
+  figure.snip1157 img {
+    margin: 20px 0 10px 0; /* Ajusta a margem da imagem */
+  }
+
+  figure.snip1157 blockquote {
+    text-align: center; /* Centraliza o texto do blockquote */
+    padding: 20px; /* Ajusta o padding para melhor espaçamento */
+    font-size: 1em; /* Tamanho da fonte ajustado */
+    max-height: none; /* Remove a altura máxima */
+  }
+
+  figure.snip1157 .author {
+    position: static; /* Remove o posicionamento absoluto */
+    padding: 0; /* Remove o padding */
+    transform: none; /* Remove a transformação */
+    text-align: center; /* Centraliza o texto do autor */
   }
 }
