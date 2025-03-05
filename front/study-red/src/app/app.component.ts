@@ -5,7 +5,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PostarComponent } from "./postar/postar.component";
 
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, NavbarComponent],
