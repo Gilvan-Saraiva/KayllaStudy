@@ -1,99 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redação Descomplicada</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Adicionando o script inline para garantir que a função esteja disponível -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleciona todos os elementos com a classe collapsible-caption
-            var elements = document.querySelectorAll('.collapsible-caption');
+<div class="page-background">
+  <!-- Texto e conteúdo do lado esquerdo -->
+  <div class="text-content">
+    <h1>REDAÇÃO DESCOMPLICADA</h1>
+    <h2>"A redação é a arte de transformar ideias em palavras que inspiram, informam e transformam."</h2>
+    <p>Aqui, você aprende redação de forma clara, objetiva e eficiente.</p>
+    <button type="button" (click)="redirectToRegister()">Cadastre-se</button>
+  </div>
 
-            // Adiciona o evento de clique a cada elemento
-            elements.forEach(function(element) {
-                element.addEventListener('click', function() {
-                    this.classList.toggle('expanded');
-                });
-            });
-        });
-    </script>
-</head>
-<body>
-    <div class="page-background">
-        <h1>REDAÇÃO DESCOMPLICADA</h1>
+  <!-- Imagem do lado direito -->
+  <div class="image-content">
+    <img src="../../assets/logo.png" alt="Logo">
+  </div>
+</div>
+
+<div class="testemonials">
+  <h1>O que os alunos falam sobre nós</h1>
+  <figure class="snip1157">
+    <blockquote>Gostaria de agradecer imensamente à professora Kaylla pela atenção
+      e ajuda durante o curso de redação. Sua orientação foi fundamental
+      para a minha evolução, contribuindo significativamente para a melhoria
+      de cada uma das minhas redações. As aulas foram extremamente explicativas,
+      desde o processo de como construir uma redação do zero até o detalhamento de
+      como cada competência é relevante. A minha experiência ao longo dessa trajetória
+      no curso foi muito enriquecedora e certamente fez toda a diferença na minha aprovação.
+      <div class="arrow"></div>
+    </blockquote>
+    <img src="/assets/garota1.jpg" alt="sq-sample3" />
+    <div class="author">
+      <h5>Mariani Ramalho</h5>
     </div>
-
-    <div id="carouselExampleCaptions" class="carousel slide">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/assets/garota1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption collapsible-caption">
-            <h5>Mariani Ramalho</h5>
-            <p class="truncate-text">
-              Gostaria de agradecer imensamente à professora Kaylla pela atenção
-              e ajuda durante o curso de redação. Sua orientação foi fundamental
-               para a minha evolução, contribuindo significativamente para a melhoria
-               de cada uma das minhas redações. As aulas foram extremamente explicativas,
-                desde o processo de como construir uma redação do zero até o detalhamento de
-                 como cada competência é relevante. A minha experiência ao longo dessa trajetória
-                  no curso foi muito enriquecedora e certamente fez toda a diferença na minha aprovação.
-            </p>
-            <span class="read-more">Clique para ler mais</span>
-            <span class="read-less" style="display: none;">Clique para recolher</span>
-          </div>
-
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/garota2.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption collapsible-caption">
-            <h5>Giovanna Rosso </h5>
-            <p class="truncate-text">O cursinho Study Red me proporcionou uma experiência
-              muito boa em relação à redação, algo que foi essencial para a minha nota. A
-              metodologia utilizada pela Kaylla fez com que eu aprendesse muito rápido o
-              processo de construção de uma redação; ela ia me explicando os tópicos e mostrando
-               os slides, isso contribuiu muito para o meu aprendizado, pois eu visualizava
-                o conteúdo e ao mesmo tempo recebia as explicações, assim absorvia mais rápido
-                 e já ia tirando as minhas dúvidas. Além disso, a Kaylla sempre estava disponível
-                  para sanar qualquer dúvida que eu tivesse em relação à redação, era algo além do
-                  cursinho. Na época eu estava no segundo ano do ensino médio e era o meu primeiro enem,
-                   e ter alcançado 900 pontos na redação do meu primeiro enem é motivo de muita alegria
-                   e gratidão à Kaylla. Study Red recomendadíssimo! ❤</p>
-            <span class="read-more">Clique para ler mais</span>
-            <span class="read-less" style="display: none;">Clique para recolher</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/garota3.jpeg" class="d-block w-100" alt="...">
-          <div class="carousel-caption collapsible-caption">
-            <h5>Josirene Almeida </h5>
-            <p class="truncate-text">Hoje celebramos duas aprovações, ebaaaaaaaa...
-              Química no Sisu, e psicologia no Prouni, e é com imensa gratidão que eu venho agradecer o Study Red,
-               que me proporcionou uma experiência incrível, que foi essencial para estás aprovações. Kaylla, você
-                demonstrou grandes qualidades no seu curso, e também como pessoa. Seus ensinamentos foram primordiais
-                 na minha evolução, com aulas maravilhosas e sempre a minha disposição, certamente essa trajetória no
-                  curso foi muito favorecedora. Estou muito feliz pela minha determinação, e obrigada pelo seu esforço
-                   e comprometimento, valeu a pena e continuará valendo no futuro. Bjos</p>
-              <span class="read-more">Clique para ler mais</span>
-              <span class="read-less" style="display: none;">Clique para recolher</span>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+  </figure>
+  <figure class="snip1157 hover">
+    <blockquote>O cursinho Study Red me proporcionou uma experiência
+      muito boa em relação à redação, algo que foi essencial para a minha nota. A
+      metodologia utilizada pela Kaylla fez com que eu aprendesse muito rápido o
+      processo de construção de uma redação; ela ia me explicando os tópicos e mostrando
+      os slides, isso contribuiu muito para o meu aprendizado, pois eu visualizava
+      o conteúdo e ao mesmo tempo recebia as explicações, assim absorvia mais rápido
+      e já ia tirando as minhas dúvidas. Além disso, a Kaylla sempre estava disponível
+      para sanar qualquer dúvida que eu tivesse em relação à redação, era algo além do
+      cursinho. Na época eu estava no segundo ano do ensino médio e era o meu primeiro enem,
+      e ter alcançado 900 pontos na redação do meu primeiro enem é motivo de muita alegria
+      e gratidão à Kaylla. Study Red recomendadíssimo! ❤
+      <div class="arrow"></div>
+    </blockquote>
+    <img src="../../assets/garota22.jpg" alt="sq-sample27" />
+    <div class="author">
+      <h5>Giovanna Rosso</h5>
     </div>
-
-</body>
-</html>
+  </figure>
+  <figure class="snip1157">
+    <blockquote>Hoje celebramos duas aprovações, ebaaaaaaaa...
+      Química no Sisu, e psicologia no Prouni, e é com imensa gratidão que eu venho agradecer o Study Red,
+      que me proporcionou uma experiência incrível, que foi essencial para estás aprovações. Kaylla, você
+      demonstrou grandes qualidades no seu curso, e também como pessoa. Seus ensinamentos foram primordiais
+      na minha evolução, com aulas maravilhosas e sempre a minha disposição, certamente essa trajetória no
+      curso foi muito favorecedora. Estou muito feliz pela minha determinação, e obrigada pelo seu esforço
+      e comprometimento, valeu a pena e continuará valendo no futuro. Bjos
+      <div class="arrow"></div>
+    </blockquote>
+    <img src="../../assets/garota3.jpeg" alt="sq-sample17" />
+    <div class="author">
+      <h5>Josirene Almeida</h5>
+    </div>
+  </figure>
+</div>

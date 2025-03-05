@@ -1,280 +1,224 @@
-body {
-  margin: 0;
+/* Estilos gerais */
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+body, html {
+  margin: 0px;
+  padding: 0px;
   font-family: 'Arial', sans-serif;
   color: #333;
+  width: 100vw;
+  max-width: 100vw;
   background-color: #e8f1f2;
-  overflow-x: hidden; /* Evita barras de rolagem horizontais */
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Adiciona rolagem suave */
 }
 
+
+/* Container principal */
 .page-background {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  background: url('/assets/logo.png') no-repeat right center;
-  background-size: 1100px;
-  background-position: 120% center;
-  max-width: 100%;
-  padding-left: 10%;
-  position: relative;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  background-color: #e8f1f2;
+  opacity: 1;
+  width: 100%;
+  max-width: 100vw;
+  background: radial-gradient(circle, transparent 20%, #e8f1f2 20%, #e8f1f2 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #e8f1f2 20%, #e8f1f2 80%, transparent 80%, transparent) 100px 100px, linear-gradient(#cfe6eb 8px, transparent 8px) 0 -4px, linear-gradient(90deg, #cfe6eb 8px, #e8f1f2 8px) -4px 0;
+  background-size: 200px 200px, 200px 200px, 100px 100px, 100px 100px;
+  padding: 0 10%; /* Espaçamento nas laterais */
 }
 
-h1 {
+/* Conteúdo de texto */
+.text-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.text-content h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700; /* Peso da fonte (ajuste conforme necessário) */
   font-size: 4rem;
   color: #2c3e50;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0;
-  z-index: 1;
-  max-width: 60%; /* Limita a largura do título */
+  margin-bottom: 20px;
 }
 
-.page-background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+.text-content h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500; /* Peso da fonte (ajuste conforme necessário) */
+  font-size: 2.2rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
-/* Carousel improvements */
+.text-content p {
+  font-size: 1.8rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.text-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.text-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Conteúdo da imagem */
+.image-content {
+  flex: 1;
+  text-align: right;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 .carousel {
-  transition: transform 0.6s ease-in-out;
-  max-width: 100%; /* Alterado de 150% para 100% para evitar overflow */
-  overflow: hidden;
+  width: 100%;
+  margin-top: 0;
 }
 
 .carousel-item img {
-  object-fit: cover;
   max-height: 70vh;
   width: 100%;
+  object-fit: cover;
 }
 
 .carousel-caption {
-  width: 70%;
-  color: white;
-  padding: 1.25rem;
-  margin-bottom: 1.25rem;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-}
-
-/* Estilos responsivos */
-@media (max-width: 1200px) {
-  .page-background {
-    background-size: 900px;
-    background-position: 110% center;
-  }
-}
-
-
-
-@media (max-width: 992px) {
-  .page-background {
-    background-size: 700px;
-    background-position: 105% center;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-    max-width: 70%;
-  }
-}
-
-@media (max-width: 768px) {
-  .page-background {
-    justify-content: flex-start;
-    padding-left: 5%;
-    background-position: 105% center;
-    background-size: 500px;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    max-width: 60%;
-  }
-
-  .carousel-item img {
-    max-height: 60vh;
-  }
-
-  /* Modificação para exibir as legendas em dispositivos móveis */
-  .carousel-caption {
-    display: block !important; /* Força a exibição das legendas */
-    width: 80%;
-    left: 10%; /* Centraliza a legenda */
-    right: 10%;
-  }
-}
-
-@media (max-width: 576px) {
-  .page-background {
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20% 5% 0;
-    background-position: center 60%; /* Ajusta a posição para o centro, abaixo do texto */
-    background-size: 400px;
-    flex-direction: column;
-  }
-
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    max-width: 100%;
-    height: 180px;
-    margin-bottom: 40vh; /* Espaço ajustado para a imagem abaixo */
-  }
-
-  .carousel-item img {
-    max-height: 50vh;
-  }
-
-  .carousel-caption {
-    width: 90%;
-    padding: 0.75rem;
-    font-size: 0.9rem;
-  }
-
-  .carousel-caption h5 {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-background {
-    background-size: 450px;
-    background-position: center 65%;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 30vh;
-  }
-
-  /* Ajustes adicionais para melhorar a visualização em telas muito pequenas */
- /* Estilos para o texto expansível */
-/* Existing styles for collapsible caption remain the same */
-.collapsible-caption {
-  cursor: pointer;
-  display: block !important; /* Força a exibição em todos os dispositivos */
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 70%;
-  max-height: 80%;
-  overflow-y: auto;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
   padding: 1rem;
-  margin-bottom: 2rem;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+  border-radius: 8px;
 }
 
-.collapsible-caption .truncate-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+.testemonials {
+  background-color: #212121;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: space-around; /* Alinha os itens no topo */
+  flex-flow: wrap;
+  margin: 0;
+  padding: 20px; /* Adiciona um pouco de espaço ao redor */
+}
+
+
+.testemonials h1 {
+  color: #ffffff; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+  width: 100%; /* Ocupa toda a largura */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  margin-top: 0px;
+}
+
+figure.snip1157 {
+  font-size: 1.3em;
+  position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  margin-bottom: 0.5rem;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 300px;
+  width: 70%;
+  color: #333;
+  text-align: left;
+  box-shadow: none !important;
+  
+}
+figure.snip1157 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+figure.snip1157 img {
+  max-width: 100%;
+  vertical-align: middle;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  margin: 40px 0 0 10px;
+}
+figure.snip1157 blockquote {
+  display: block;
+  border-radius: 8px;
+  position: relative;
+  background-color: #fafafa;
+  padding: 25px 50px 30px 50px;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.6em;
+  font-style: italic;
+  overflow-y: auto; /* Adiciona scroll vertical se necessário */
+  max-height: 400px; /* Altura máxima antes de aparecer o scroll */
+}
+figure.snip1157 blockquote:before,
+figure.snip1157 blockquote:after {
+  font-family: 'FontAwesome';
+  content: "\201C";
+  position: absolute;
+  font-size: 50px;
+  opacity: 0.8;
+  font-style: normal;
+}
+figure.snip1157 blockquote:before {
+  top: 25px;
+  left: 20px;
+}
+figure.snip1157 blockquote:after {
+  content: "\201D";
+  right: 20px;
+  bottom: 0;
 }
 
-.collapsible-caption.expanded .truncate-text {
-  -webkit-line-clamp: unset;
-  max-height: none;
+figure.snip1157 .author {
+  position: absolute;
+  bottom: 45px;
+  padding: 0 10px 0 120px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+}
+figure.snip1157 .author h5 {
+  opacity: 0.8;
+  margin: 0;
+  font-weight: 800;
+}
+figure.snip1157 .author h5 span {
+  font-weight: 400;
+  text-transform: none;
+  padding-left: 5px;
 }
 
-/* Hide read-more/read-less buttons on desktop by default */
-.read-more, .read-less {
-  display: none;
-  font-weight: bold;
-  font-size: 0.8rem;
-  color: #f0f0f0;
-  text-decoration: underline;
-  margin-top: 0.25rem;
-}
 
-.collapsible-caption.expanded .read-less {
-  display: none; /* Keep hidden on desktop even when expanded */
-}
-
-/* Only show read-more/read-less on mobile screens */
+/* Responsividade */
 @media (max-width: 768px) {
-  .read-more {
-    display: block; /* Show on mobile */
+  .page-background {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
   }
 
-  .collapsible-caption.expanded .read-more {
-    display: none;
+  .text-content {
+    max-width: 100%;
   }
 
-  .collapsible-caption.expanded .read-less {
-    display: block; /* Show on mobile when expanded */
+  .image-content {
+    text-align: center;
+    margin-top: 20px;
   }
-}
-
-/* Remaining responsive adjustments remain the same */
-@media (max-width: 992px) {
-  .collapsible-caption {
-    max-width: 80%;
-    padding: 0.75rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .collapsible-caption {
-    max-width: 90%;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .collapsible-caption .truncate-text {
-    -webkit-line-clamp: 2;
-  }
-}
-
-@media (max-width: 576px) {
-  .collapsible-caption {
-    max-width: 95%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .collapsible-caption .truncate-text {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 2;
-  }
-
-  .read-more, .read-less {
-    font-size: 0.7rem;
-  }
-
-  .collapsible-caption h5 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .collapsible-caption {
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    max-height: 70%;
-  }
-
-  .collapsible-caption .truncate-text {
-    -webkit-line-clamp: 1;
-    font-size: 0.8rem;
-  }
-
-  .collapsible-caption h5 {
-    font-size: 0.9rem;
-    margin-bottom: 0.15rem;
-  }
-}
 }

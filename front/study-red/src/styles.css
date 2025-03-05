@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importação global da fonte Oswald */
+body {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+
+  }
+  
+  /* Exemplo de uso da fonte em outros elementos */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500; /* Peso da fonte (ajuste conforme necessário) */
+  }
+  
+  p {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300; /* Peso da fonte (ajuste conforme necessário) */
+  }
