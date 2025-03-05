@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
 
-  private apiUrl = 'http://localhost:3000/api/users';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -17,13 +18,13 @@ export class UserService {
     return this.http.post(this.apiUrl, userData);
   }
   getAlunos(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/role/aluno`);
+    return this.http.get(`${this.apiUrl}/users/role/aluno`);
   }
   getUsers(role: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/role/void`);
+    return this.http.get(`${this.apiUrl}/users/role/void`);
   }
 
   updateUserToAluno(email: string) {
-    return this.http.put(`${this.apiUrl}/to-aluno`, { email });
+    return this.http.put(`${this.apiUrl}/users/to-aluno`, { email });
   }
 }
