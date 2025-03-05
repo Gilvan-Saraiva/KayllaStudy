@@ -1,0 +1,28 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="form-group">
+  <label for="usuarioSelect">Selecionar Usuário para Aluno</label>
+  <select id="usuarioSelect" [(ngModel)]="selectedAlunos" class="form-control" multiple>
+    <option *ngFor="let user of usuarios" [value]="user.email">
+      {{ user.name }} ({{ user.email }})
+    </option>
+  </select>
+
+  <button (click)="updateUserRole(selectedAlunos[0])">Atualizar</button>
+
+</div>
+<h2>Lista de Materiais Disponíveis</h2>
+
+<div *ngIf="materiais.length > 0; else vazio">
+  <ul>
+    <li *ngFor="let material of materiais">
+      <strong>{{ material.title }}</strong> - {{ material.description }}
+      <button (click)="deleteMaterial(material._id)">Excluir</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #vazio>
+  <p>Não há materiais disponíveis no momento.</p>
+</ng-template>

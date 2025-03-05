@@ -35,7 +35,9 @@ router.put('/troca-senha', userController.trocaSenha);
 router.post('/upload-pdf', upload.single('pdf'), pdfController.uploadPDF);
 
 // Rotas Materiais
+router.get('/getmateriais', materialController.getMateriais);
 router.post('/materiais', upload.array('pdfFiles'), materialController.postMaterial);
+router.delete('/materiais/:materialId', materialController.deleteMaterial);
 
 router.get('/usuario/:userId', async (req, res) => {
     console.log('ID do usuário:', req.params.userId); 

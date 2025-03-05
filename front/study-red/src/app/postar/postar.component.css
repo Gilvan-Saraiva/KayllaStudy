@@ -1,0 +1,90 @@
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container do formulário */
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Título do formulário */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para os grupos de formulário */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Estilos para os rótulos */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Estilos para os campos de entrada */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+/* Estilos para os campos de entrada ao focar */
+.form-control:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilos para o botão */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+/* Estilos para o botão ao passar o mouse */
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para o texto pequeno */
+small {
+  display: block;
+  margin-top: 5px;
+  color: #6c757d;
+}
+
+/* Estilos para o seletor múltiplo */
+select.form-control {
+  height: auto; /* Para garantir que o seletor tenha uma altura adequada */
+}
+
+/* Estilos para mensagens de erro (opcional) */
+.error-message {
+  color: red;
+  font-size: 12px;
+}

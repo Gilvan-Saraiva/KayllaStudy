@@ -1,4 +1,35 @@
 const materialServices = require('../Services/materialServices');
+const { deletarMaterial, listarMateriais } = require('../Services/materialServices');
+
+
+exports.getMateriais = async (req, res) => {
+    try {
+        const materiais = await listarMateriais();
+
+        if (!materiais || materiais.length === 0) {
+            return res.status(404).json({ message: 'Nenhum material encontrado.' });
+        }
+
+        res.status(200).json({ message: 'Materiais encontrados.', payload: materiais });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar materiais.', error: error.message });
+    }
+};
+
+exports.deleteMaterial = async (req, res) => {
+    try {
+        const { materialId } = req.params;
+
+        if (!materialId) {
+            return res.status(400).json({ message: 'O ID do material é obrigatório.' });
+        }
+
+        const result = await deletarMaterial(materialId);
+        return res.status(result.response).json(result);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao deletar material.', error: error.message });
+    }
+};
 
 exports.postMaterial = async (req, res) => {
     try {

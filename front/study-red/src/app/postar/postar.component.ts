@@ -32,7 +32,7 @@ export class PostarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUsers();
+
     this.getAlunos();
   }
 

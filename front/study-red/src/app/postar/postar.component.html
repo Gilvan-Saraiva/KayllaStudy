@@ -2,7 +2,7 @@
   <h2>Postar Material</h2>
   <form (ngSubmit)="onSubmit()" #materialForm="ngForm">
     <div class="form-group">
-      <label for="titulo">Título</label>
+      <label for="titulo">Título*</label>
       <input
         type="text"
         id="titulo"
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-group">
-      <label for="descricao">Descrição</label>
+      <label for="descricao">Descrição*</label>
       <textarea
         id="descricao"
         class="form-control"
@@ -24,7 +24,7 @@
     </div>
 
     <div class="form-group">
-      <label for="youtubeURL">Links do YouTube</label>
+      <label for="youtubeURL">Link do YouTube</label>
       <input
         type="text"
         id="youtubeURL"
@@ -32,11 +32,11 @@
         [(ngModel)]="material.youtubeURL"
         name="youtubeURL"
       />
-      <small>Separe os links com vírgula</small>
+
     </div>
 
     <div class="form-group">
-      <label for="pdfFiles">Upload de PDFs</label>
+      <label for="pdfFiles">Upload de PDF</label>
       <input
         type="file"
         id="pdfFiles"
@@ -69,14 +69,3 @@
 </div>
 
 <!-- Lista de Usuários (para transformar em aluno) -->
-<div class="form-group">
-  <label for="usuarioSelect">Selecionar Usuário para Aluno</label>
-  <select id="usuarioSelect" [(ngModel)]="selectedAlunos" class="form-control" multiple>
-    <option *ngFor="let user of usuarios" [value]="user.email">
-      {{ user.name }} ({{ user.email }})
-    </option>
-  </select>
-
-  <button (click)="updateUserRole(selectedAlunos[0])">Atualizar</button>
-
-</div>

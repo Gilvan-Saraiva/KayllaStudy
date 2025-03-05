@@ -19,7 +19,8 @@ const materialSchema = new mongoose.Schema({
     },
     usuariosAssociados: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'User', required: true,
+        ref: 'User',
+        required: true,
     },
 });
 
