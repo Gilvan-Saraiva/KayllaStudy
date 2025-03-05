@@ -1,6 +1,5 @@
 /* Estilos gerais */
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
 body, html {
   margin: 0px;
   padding: 0px;
@@ -135,7 +134,7 @@ figure.snip1157 {
   color: #333;
   text-align: left;
   box-shadow: none !important;
-  
+
 }
 figure.snip1157 * {
   -webkit-box-sizing: border-box;
