@@ -1,0 +1,13 @@
+<div class="chat-container">
+  <div class="messages">
+    <div *ngFor="let message of messages">
+      <div><strong>{{ message.sender.name }}:</strong> {{ message.content }}</div>
+      <div>
+        <small>{{ message.timestamp | date:'dd/MM/yyyy HH:mm' }}</small>
+      </div>
+    </div>
+  </div>
+
+  <textarea [(ngModel)]="messageContent" placeholder="Digite sua mensagem..."></textarea>
+  <button (click)="sendMessage()">Enviar</button>
+</div>

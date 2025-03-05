@@ -26,7 +26,6 @@ export class ControleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    this.getAlunos();
     this.getTodosMateriais();
 
   }

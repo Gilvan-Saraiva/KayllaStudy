@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { ClassComponent } from './class/class.component';
 import { ControlContainer } from '@angular/forms';
 import { ControleComponent } from './controle/controle.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 export const routes: Routes = [
@@ -16,7 +17,8 @@ export const routes: Routes = [
   {path: 'register', component:RegisterComponent},
   {path: 'postar', component:PostarComponent},
   {path: 'class', component:ClassComponent},
-  {path: 'controle', component:ControleComponent }
+  {path: 'controle', component:ControleComponent },
+  {path: 'faq', component:FaqComponent}
 ];
 
 @NgModule({
