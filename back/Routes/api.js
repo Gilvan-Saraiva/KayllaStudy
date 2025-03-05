@@ -7,14 +7,7 @@ const materialController = require('../Controllers/materialController');
 const Material = require('../models/material');
 
 // Configuração do Multer para upload de PDF
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Pasta onde os arquivos serão salvos
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Nome do arquivo
-    }
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({ 
     storage: storage,

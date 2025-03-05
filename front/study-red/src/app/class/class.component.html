@@ -14,8 +14,8 @@
     ></iframe>
   </div>
 
-  <!-- Renderizar os PDFs -->
+  <!-- Renderizar os PDFs com botão de download -->
   <div *ngFor="let pdf of material.pdfPath">
-    <a [href]="pdf" target="_blank">Baixar PDF</a>
+    <button (click)="downloadPdf(pdf)">Baixar PDF</button>
   </div>
 </div>

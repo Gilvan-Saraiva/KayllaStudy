@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles = []) => {
     try {
-        const pdfPath = pdfFiles.map(file => file.path);
+        const pdfBuffers = pdfFiles.map(file => file.buffer);
+
 
         const youtubeURLArray = Array.isArray(youtubeURL) ? youtubeURL : [youtubeURL];
 
@@ -28,8 +29,8 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
         const novoMaterial = new Material({
             title,
             description,
-            pdfPath,
-            youtubeURL: youtubeVideoIds, // Salva apenas os IDs dos vídeos
+            pdfPath: pdfBuffers,  
+            youtubeURL: youtubeVideoIds, 
             usuariosAssociados: validUsersId,
         });
 
@@ -41,11 +42,11 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
                 {
                     $push: {
                         youtubeURL: { $each: youtubeVideoIds },
-                        pdfPath: { $each: pdfPath },
+                        pdfPath: { $each: pdfBuffers },
                         materiaisAssociados: novoMaterial._id
                     }
                 }
-            );
+            );            
         }
 
         return { response: 201, message: "Material Criado", status: "success" };
