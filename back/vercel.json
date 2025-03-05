@@ -7,10 +7,8 @@
       }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/Routes/api.js"
-      }
-    ]
+    { "src": "/api/(.*)", "dest": "/server.js" },
+    { "src": "/(.*)", "dest": "/dist/host/$1" }
+  ]
   }
   
