@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environments.prod';
 
 export interface User {
   id: string;
@@ -22,6 +22,7 @@ export interface LoginResponse {
 })
 export class AuthService {
   private apiUrl = environment.apiUrl;
+
   private currentUserSubject: BehaviorSubject<LoginResponse | null>;
   public currentUser: Observable<LoginResponse | null>;
   private platformId = inject(PLATFORM_ID);
