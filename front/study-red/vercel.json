@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "package.json",
+      "src": "dist/study-red/**",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist/study-red"
@@ -10,5 +10,7 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  ],
+"rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
+
