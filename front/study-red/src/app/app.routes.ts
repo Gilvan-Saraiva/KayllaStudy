@@ -8,6 +8,8 @@ import { ClassComponent } from './class/class.component';
 import { ControlContainer } from '@angular/forms';
 import { ControleComponent } from './controle/controle.component';
 import { FaqComponent } from './faq/faq.component';
+import { RedefinirComponent } from './redefinir/redefinir.component';
+import { RedefinirSenhaComponent } from './redefinir-senha/redefinir-senha.component';
 
 
 export const routes: Routes = [
@@ -18,7 +20,10 @@ export const routes: Routes = [
   {path: 'postar', component:PostarComponent},
   {path: 'class', component:ClassComponent},
   {path: 'controle', component:ControleComponent },
-  {path: 'faq', component:FaqComponent}
+  {path: 'forum', component:FaqComponent},
+  {path: 'redefinir', component:RedefinirComponent},
+  {path: 'redefinir-senha', component:RedefinirSenhaComponent}
+
 ];
 
 @NgModule({

@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Recuperar Senha</h2>
+  <form [formGroup]="recuperaForm" (ngSubmit)="recuperarSenha()">
+    <label for="email">E-mail:</label>
+    <input id="email" type="email" formControlName="email" placeholder="Digite seu e-mail" />
+    <button type="submit" (click)="redirectToRedefine()" [disabled]="recuperaForm.invalid">Enviar</button>
+  </form>
+</div>

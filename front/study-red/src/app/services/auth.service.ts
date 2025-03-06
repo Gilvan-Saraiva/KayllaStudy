@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { environment } from '../../environments/environments.prod';
+import { environment } from '../../environments/environments';
 
 export interface User {
   id: string;
@@ -76,4 +76,12 @@ export class AuthService {
   getToken(): string {
     return this.isBrowser() ? localStorage.getItem('token') || '' : '';
   }
+  recuperaSenha(email: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/recupera-senha`, { email });
+  }
+
+  trocaSenha(data: any): Observable<string> {
+  return this.http.put(`${this.apiUrl}/troca-senha`, data, { responseType: 'text' });
+}
+
 }

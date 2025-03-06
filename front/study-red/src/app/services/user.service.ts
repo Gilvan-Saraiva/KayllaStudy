@@ -15,7 +15,7 @@ export class UserService {
 
 
   registerUser(userData: any): Observable<any> {
-    return this.http.post(this.apiUrl, userData);
+    return this.http.post<any>(`${this.apiUrl}/users`, userData);
   }
   getAlunos(): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/role/aluno`);
@@ -27,4 +27,5 @@ export class UserService {
   updateUserToAluno(email: string) {
     return this.http.put(`${this.apiUrl}/users/to-aluno`, { email });
   }
+
 }

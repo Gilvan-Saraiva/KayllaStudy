@@ -1,0 +1,18 @@
+<div>
+  <h2>Trocar Senha</h2>
+  <form [formGroup]="trocaForm" (ngSubmit)="trocarSenha()">
+    <label for="troca-email">E-mail:</label>
+    <input id="troca-email" type="email" formControlName="email" placeholder="Digite seu e-mail" />
+
+    <label for="novaSenha">Nova Senha:</label>
+    <input id="novaSenha" type="password" formControlName="novaSenha" placeholder="Digite a nova senha" />
+
+    <label for="token">Token:</label>
+    <input id="token" type="text" formControlName="tokenReset" placeholder="Digite o token" />
+
+    <button type="submit" [disabled]="trocaForm.invalid">Alterar Senha</button>
+  </form>
+
+  <p *ngIf="mensagem">{{ mensagem }}</p>
+
+</div>
