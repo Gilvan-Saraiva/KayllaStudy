@@ -2,7 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, AfterViewInit, NgZone, PLATFORM_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
-
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -11,11 +11,19 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
-  constructor(private ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: any, private router: Router) {}
+
+  isLoggedIn: boolean = false;
+
+  constructor(private ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: any, private router: Router, private authService: AuthService) {}
   redirectToRegister() {
   console.log('Botão clicado!'); // Verifique se essa mensagem aparece no console
   this.router.navigate(['/register']);
+
 }
+isAuthenticated(): boolean {
+  return this.authService.isAuthenticated();
+}
+
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.ngZone.runOutsideAngular(() => {

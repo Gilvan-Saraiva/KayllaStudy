@@ -34,6 +34,8 @@ iframe {
   display: block;
   margin: 0 auto 15px;
   border-radius: 8px;
+  width: 100%; /* Ajusta a largura para 100% */
+  height: auto; /* Altura automática para manter a proporção */
 }
 
 /* Estilos para os links de PDF */
@@ -49,4 +51,37 @@ a {
 
 a:hover {
   background-color: #0056b3;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  h3 {
+    font-size: 1.2em; /* Reduz o tamanho da fonte em telas menores */
+  }
+
+  p {
+    font-size: 0.9em; /* Reduz o tamanho da fonte em telas menores */
+  }
+
+  a {
+    padding: 8px 12px; /* Ajusta o padding do botão em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px; /* Reduz o padding do body em telas muito pequenas */
+  }
+
+  div {
+    padding: 15px; /* Reduz o padding do container em telas muito pequenas */
+  }
+
+  h3 {
+    font-size: 1.1em; /* Reduz ainda mais o tamanho da fonte em telas muito pequenas */
+  }
+
+  p {
+    font-size: 0.8em; /* Reduz ainda mais o tamanho da fonte em telas muito pequenas */
+  }
 }

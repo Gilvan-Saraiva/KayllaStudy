@@ -4,7 +4,7 @@
     <h1>REDAÇÃO DESCOMPLICADA</h1>
     <h2>"A redação é a arte de transformar ideias em palavras que inspiram, informam e transformam."</h2>
     <p>Aqui, você aprende redação de forma clara, objetiva e eficiente.</p>
-    <button type="button" (click)="redirectToRegister()">Cadastre-se</button>
+    <button type="button"*ngIf="!isAuthenticated()" (click)="redirectToRegister()">Cadastre-se</button>
   </div>
 
   <!-- Imagem do lado direito -->
