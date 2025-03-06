@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './redefinir.component.html',
   styleUrls: ['./redefinir.component.css'],
   standalone: true,
-  imports:[CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [CommonModule,FormsModule, ReactiveFormsModule]
 })
 export class RedefinirComponent {
   recuperaForm: FormGroup;
@@ -40,11 +40,16 @@ export class RedefinirComponent {
     this.authService.recuperaSenha(email).subscribe({
       next: (res) => {
         this.mensagem = res.message;
+        // Navega para a tela de redefinição de senha após a requisição
+        this.router.navigate(['/redefinir-senha']);
       },
       error: (err) => {
         this.mensagem = err.error || 'Erro ao solicitar recuperação de senha';
       }
     });
+    setTimeout(() => {
+      this.router.navigate(['/redefinir-senha']); // substitua '/pagina-destino' pela rota desejada
+    }, 1500);
   }
 
   trocarSenha() {
@@ -58,7 +63,6 @@ export class RedefinirComponent {
 
     this.authService.trocaSenha(data).subscribe({
       next: (res) => {
-        // Mesmo que 'res' contenha "senha alterada", definimos uma mensagem fixa
         this.mensagem = 'Senha alterada com sucesso';
         this.router.navigate(['/login']);
       },
@@ -66,9 +70,5 @@ export class RedefinirComponent {
         this.mensagem = err.error || 'Erro ao trocar senha';
       }
     });
-  }
-  redirectToRedefine() {
-    console.log('Botão clicado!'); // Verifique se essa mensagem aparece no console
-    this.router.navigate(['/redefinir-senha']);
   }
 }
