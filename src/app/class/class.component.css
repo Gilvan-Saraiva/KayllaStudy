@@ -39,16 +39,12 @@ iframe {
 }
 .video-container {
   position: relative;
-  width: 100%;
-  max-width: 1200px; /* Largura máxima para telas grandes */
-  padding-bottom: 45%; /* Proporção ajustada para 16:9 */
-  height: 0;
+  padding-bottom: 4%; /* Proporção ajustada para 16:9 */
+  height: auto;
   overflow: hidden;
   margin: 0 auto; /* Centraliza o vídeo */
   border-radius: 8px;
-  width: auto; /* Ajusta a largura para 100% */
-  height: auto; /* Altura automática para manter a proporção */
-
+  width: auto;
 }
 
 /* Estilos para os links de PDF */
@@ -68,6 +64,9 @@ a:hover {
 
 /* Media Queries para responsividade */
 @media (max-width: 768px) {
+  .video-container {
+    height: auto;
+  }
   iframe {
     display: block;
     margin: 0 auto 15px;
