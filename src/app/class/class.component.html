@@ -1,12 +1,14 @@
+<div *ngIf="materiais.length === 0" class="no-materials">
+  <p>Você ainda não possui materiais disponíveis. Fique de olho, em breve novos materiais serão adicionados!</p>
+</div>
+
 <div *ngFor="let material of materiais">
   <h3>{{ material.title }}</h3>
   <p>{{ material.description }}</p>
 
   <!-- Renderizar os vídeos -->
-  <div *ngFor="let videoId of material.youtubeURL">
+  <div *ngFor="let videoId of material.youtubeURL" class="video-container">
     <iframe
-      width="560"
-      height="315"
       [src]="getVideoUrl(videoId)"
       frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

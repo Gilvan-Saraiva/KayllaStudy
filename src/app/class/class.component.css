@@ -37,6 +37,19 @@ iframe {
   width: 600px; /* Ajusta a largura para 100% */
   height: 600px; /* Altura automática para manter a proporção */
 }
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Largura máxima para telas grandes */
+  padding-bottom: 45%; /* Proporção ajustada para 16:9 */
+  height: 0;
+  overflow: hidden;
+  margin: 0 auto; /* Centraliza o vídeo */
+  border-radius: 8px;
+  width: 600px; /* Ajusta a largura para 100% */
+  height: 600px; /* Altura automática para manter a proporção */
+
+}
 
 /* Estilos para os links de PDF */
 a {
@@ -98,4 +111,21 @@ a:hover {
   p {
     font-size: 0.8em; /* Reduz ainda mais o tamanho da fonte em telas muito pequenas */
   }
+}
+
+.no-materials {
+  background-color: #f0f8ff; /* Cor de fundo suave */
+  color: #333; /* Cor do texto */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 2px solid #b0e0e6;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.no-materials p {
+  font-style: italic;
+  color: #555;
 }
