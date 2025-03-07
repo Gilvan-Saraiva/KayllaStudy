@@ -35,7 +35,7 @@ iframe {
   margin: 0 auto 15px;
   border-radius: 8px;
   width: 100%; /* Ajusta a largura para 100% */
-  height: auto; /* Altura automática para manter a proporção */
+  height: 500px; /* Altura automática para manter a proporção */
 }
 
 /* Estilos para os links de PDF */
@@ -55,6 +55,13 @@ a:hover {
 
 /* Media Queries para responsividade */
 @media (max-width: 768px) {
+  iframe {
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    width: 100%; /* Ajusta a largura para 100% */
+    height: auto; /* Altura automática para manter a proporção */
+  }
   h3 {
     font-size: 1.2em; /* Reduz o tamanho da fonte em telas menores */
   }
@@ -69,6 +76,13 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+  iframe {
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    width: 100%; /* Ajusta a largura para 100% */
+    height: auto; /* Altura automática para manter a proporção */
+  }
   body {
     padding: 10px; /* Reduz o padding do body em telas muito pequenas */
   }

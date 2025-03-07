@@ -81,7 +81,11 @@ export class AuthService {
   }
 
   trocaSenha(data: any): Observable<string> {
-  return this.http.put(`${this.apiUrl}/troca-senha`, data, { responseType: 'text' });
-}
+    return this.http.put(`${this.apiUrl}/troca-senha`, data, { responseType: 'text' });
+  }
+  isRoleVoid(): boolean {
+    const user = this.getUser();
+    return user?.user?.role === 'void';
+  }
 
 }

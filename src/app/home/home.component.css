@@ -251,6 +251,7 @@ figure.snip1157 .author h5 span {
     padding: 20px 30px; /* Reduz o padding interno para economizar espaço */
     font-size: 1em; /* Ajusta o tamanho da fonte se necessário */
     max-height: none; /* Remove a altura máxima para evitar scroll */
+    overflow-y: hidden;
   }
 
   figure.snip1157 img {
@@ -274,6 +275,7 @@ figure.snip1157 .author h5 span {
     width: 90%; /* Largura ajustada para dispositivos móveis */
     max-width: 90%; /* Largura máxima ajustada */
     margin: 10px 0; /* Margens ajustadas */
+    overflow-y: hidden;
   }
 
   figure.snip1157 img {
@@ -285,6 +287,7 @@ figure.snip1157 .author h5 span {
     padding: 20px; /* Ajusta o padding para melhor espaçamento */
     font-size: 1em; /* Tamanho da fonte ajustado */
     max-height: none; /* Remove a altura máxima */
+    overflow-y: hidden;
   }
 
   figure.snip1157 .author {
@@ -293,4 +296,114 @@ figure.snip1157 .author h5 span {
     transform: none; /* Remove a transformação */
     text-align: center; /* Centraliza o texto do autor */
   }
+
+  /* Responsividade */
+@media (max-width: 768px) {
+  .page-background {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .text-content {
+    max-width: 100%;
+  }
+
+  .image-content {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .text-content h1 {
+    font-size: 2.5rem; /* Ajuste o tamanho da fonte para dispositivos móveis */
+    line-height: 1.2; /* Ajuste o line-height para evitar sobreposição */
+    margin-bottom: 10px; /* Reduza o espaçamento inferior */
+  }
+
+  .testemonials {
+    height: auto; /* Ajusta a altura para ser automática */
+    padding: 20px 10px; /* Reduz o padding para evitar overflow */
+  }
+
+  .testemonials h1 {
+    margin-top: 20px;
+  }
+
+  figure.snip1157 {
+    width: 100%; /* Faz com que cada testemunho ocupe 100% da largura */
+    max-width: 100%; /* Garante que não ultrapasse o contêiner */
+    margin: 10px 0; /* Ajusta as margens para evitar sobreposição */
+  }
+
+  figure.snip1157 blockquote {
+    padding: 20px; /* Reduz o padding interno para economizar espaço */
+    font-size: 1em; /* Ajusta o tamanho da fonte se necessário */
+    height: auto; /* Altura automática para evitar scroll */
+    max-height: none; /* Remove a altura máxima */
+    overflow-y: hidden;
+  }
+
+  figure.snip1157 img {
+    margin: 20px 0 10px 0; /* Ajusta a margem da imagem */
+  }
+
+  figure.snip1157 .author {
+    position: static; /* Remove o posicionamento absoluto */
+    padding: 10px 0; /* Ajusta o padding do autor */
+    text-align: center; /* Centraliza o nome do autor */
+    transform: none; /* Remove a transformação */
+  }
+}
+
+  /* Responsividade */
+@media (max-width: 768px) {
+  figure.snip1157 {
+    width: 90%; /* Largura ajustada para dispositivos móveis */
+    max-width: 90%; /* Largura máxima ajustada */
+    margin: 10px 0; /* Margens ajustadas */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+  }
+
+  figure.snip1157 img {
+    margin: 20px 0 10px 0; /* Centraliza a imagem */
+  }
+
+  figure.snip1157 blockquote {
+    text-align: center; /* Centraliza o texto do blockquote */
+    padding: 20px; /* Ajusta o padding para melhor espaçamento */
+    font-size: 1em; /* Tamanho da fonte ajustado */
+    height: auto; /* Altura automática para evitar scroll */
+    max-height: none; /* Remove a altura máxima */
+    overflow-y: hidden;
+  }
+
+  figure.snip1157 .author {
+    position: static; /* Remove o posicionamento absoluto */
+    padding: 0; /* Remove o padding */
+    transform: none; /* Remove a transformação */
+    text-align: center; /* Centraliza o texto do autor */
+  }
+}
+/* Ajustes específicos para iPhone SE (telas pequenas) */
+@media (max-width: 320px) {
+  .testemonials {
+    padding: 10px; /* Reduz o padding para economizar espaço */
+  }
+
+  .testemonials h1 {
+    font-size: 1.2rem; /* Tamanho menor para telas pequenas */
+    margin-bottom: 10px; /* Reduz o espaçamento abaixo do título */
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center; /* Centraliza a logo horizontalmente */
+    margin-bottom: 10px; /* Reduz o espaçamento abaixo da logo */
+  }
+
+  .logo img {
+    max-width: 80%; /* Reduz o tamanho da logo para caber em telas pequenas */
+    height: auto; /* Mantém a proporção da logo */
+  }
+}
 }

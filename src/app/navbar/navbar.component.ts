@@ -18,6 +18,10 @@ export class NavbarComponent {
     return this.authService.isAuthenticated();
   }
 
+  isRoleVoid(): boolean {
+    return this.authService.isRoleVoid();
+  }
+
   isAdmin(): boolean {
     const user: LoginResponse | null = this.authService.getUser();
     return !!user && user.user.role === 'admin';

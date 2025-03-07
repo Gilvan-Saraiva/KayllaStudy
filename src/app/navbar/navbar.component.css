@@ -54,5 +54,11 @@
 
 .custom-navbar .btn-outline-light:hover {
   background-color: rgb(162, 169, 172);
-  color: #207cdf; /* Cor de fundo ao passar o mouse */
+  color: #000000; /* Cor de fundo ao passar o mouse */
+}
+
+.username-text {
+  color: #fff; /* Cor laranja, por exemplo */
+  font-weight: bold; /* Opcional: deixa o texto em negrito */
+  font-size: 1.2em; /* Tamanho da fonte */
 }
