@@ -10,7 +10,7 @@
           <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="isAuthenticated()" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" *ngIf="isAuthenticated() && !isRoleVoid()" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Ações
           </a>
           <ul class="dropdown-menu" >
@@ -18,16 +18,19 @@
             <li *ngIf="isAdmin()"><a class="dropdown-item" href="controle">Controle</a></li>
             <li *ngIf="isAluno()"><a class="dropdown-item" href="class">Materiais</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item"  href="forum">Fórum</a></li>
+            <li><a class="dropdown-item" href="forum">Fórum</a></li>
           </ul>
         </li>
       </ul>
 
       <!-- Exibe o nome do usuário e o botão de logout se estiver autenticado -->
       <form class="d-flex" role="search">
-        <button *ngIf="isAuthenticated()" class="btn btn-outline-light" type="button" (click)="logout()">Sair</button>
+        <button *ngIf="isAuthenticated()" class="btn btn-outline-light" type="button" (click)="logout()">
+          <img src="../../assets/sair.png" alt="Ícone de sair" class="me-2" style="height: 24px;"> <!-- Adicione a classe "me-2" para margem à direita -->
+          Sair
+        </button>
         <button *ngIf="!isAuthenticated() && !isLoginPage()" class="btn btn-outline-light" type="button" (click)="redirectToLogin()">Login</button>
-        <span *ngIf="isAuthenticated()" class="navbar-text ms-3">{{ getUserName() }}</span>
+        <span *ngIf="isAuthenticated()" class="navbar-text ms-3 username-text">{{ getUserName() }}</span>
       </form>
 
     </div>

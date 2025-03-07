@@ -17,8 +17,11 @@
 <div *ngIf="materiais.length > 0; else vazio">
   <ul>
     <li *ngFor="let material of materiais">
-      <strong>{{ material.title }}</strong> - {{ material.description }}
-      <button (click)="deleteMaterial(material._id)">Excluir</button>
+      <div class="material-info">
+        <strong>TÍTULO: {{ material.title }}</strong>
+        <span class="material-description">DESCRIÇÃO: {{ material.description }}</span>
+      </div>
+      <button (click)="deleteMaterial(material._id)" class="delete-button">Excluir</button>
     </li>
   </ul>
 </div>

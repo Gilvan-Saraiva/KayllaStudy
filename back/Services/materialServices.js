@@ -6,8 +6,8 @@ const postarMaterial = async (title, description, youtubeURL, usersId, pdfFiles 
     try {
         const pdfBuffers = pdfFiles.map(file => file.buffer);
 
-        const youtubeURLArray = Array.isArray(youtubeURL) ? youtubeURL : [youtubeURL];
-
+        // Verifica se youtubeURL foi fornecido
+        const youtubeURLArray = youtubeURL ? (Array.isArray(youtubeURL) ? youtubeURL : [youtubeURL]) : [];
         const youtubeVideoIds = youtubeURLArray.map(url => {
             const videoIdMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*[?&]v=|embed\/|v\/|shorts\/))([\w-]{11})/);
             return videoIdMatch ? videoIdMatch[1] : url;
