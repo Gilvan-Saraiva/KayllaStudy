@@ -4,14 +4,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const routes = require('./Routes/api');
-require('dotenv').config(); 
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors({
-    origin: ['https://kaylla-study.vercel.app', 'http://localhost:4200'],
+    origin: ['https://kaylla-studyy.vercel.app', 'http://localhost:4200'],
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
 }));
@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
     .then(() => console.log('Conectado ao MongoDB Atlas'))
     .catch((err) => console.error('Erro ao conectar ao MongoDB Atlas', err));
-    
-app.use('/api', routes);  
+
+app.use('/api', routes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
